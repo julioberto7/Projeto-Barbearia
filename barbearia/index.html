@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO básico -->
+  <title>Salão Bella Donna | Beleza & Estilo em Currais Novos</title>
+  <meta name="description" content="Salão de beleza em Currais Novos. Cortes, coloração, manicure e muito mais. Agende seu horário pelo WhatsApp." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========== HEADER / NAV ========== -->
+  <header class="header" id="header">
+    <nav class="nav container">
+      <a href="#inicio" class="nav-logo">Bella <span>Donna</span></a>
+
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#inicio"    class="nav-link">Início</a></li>
+        <li><a href="#servicos"  class="nav-link">Serviços</a></li>
+        <li><a href="#galeria"   class="nav-link">Galeria</a></li>
+        <li><a href="#sobre"     class="nav-link">Sobre</a></li>
+        <li><a href="#agendamento" class="nav-link nav-cta">Agendar</a></li>
+      </ul>
+
+      <!-- Botão hambúrguer (mobile) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="inicio">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container">
+      <p class="hero-eyebrow">Salão de Beleza em Currais Novos</p>
+      <h1 class="hero-title">Você merece se sentir <em>incrível</em></h1>
+      <p class="hero-desc">Cortes, coloração, manicure e tratamentos capilares com quem realmente entende do seu cabelo.</p>
+      <div class="hero-buttons">
+        <a href="#agendamento" class="btn btn-primary">Agendar horário</a>
+        <a href="#servicos"    class="btn btn-ghost">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVIÇOS ========== -->
+  <section class="section" id="servicos">
+    <div class="container">
+      <p class="section-eyebrow">O que fazemos</p>
+      <h2 class="section-title">Nossos Serviços</h2>
+
+      <div class="services-grid">
+
+        <div class="service-card">
+          <div class="service-icon">✂️</div>
+          <h3 class="service-name">Corte Feminino</h3>
+          <p class="service-desc">Corte personalizado para o seu estilo e tipo de rosto.</p>
+          <p class="service-price">A partir de <strong>R$ 50</strong></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3 class="service-name">Coloração</h3>
+          <p class="service-desc">Luzes, ombré, coloração completa e correção de cor.</p>
+          <p class="service-price">A partir de <strong>R$ 120</strong></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💅</div>
+          <h3 class="service-name">Manicure & Pedicure</h3>
+          <p class="service-desc">Unhas impecáveis com os melhores esmaltes do mercado.</p>
+          <p class="service-price">A partir de <strong>R$ 30</strong></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">✨</div>
+          <h3 class="service-name">Tratamento Capilar</h3>
+          <p class="service-desc">Hidratação, reconstrução e cronograma capilar completo.</p>
+          <p class="service-price">A partir de <strong>R$ 80</strong></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">💇</div>
+          <h3 class="service-name">Escova Progressiva</h3>
+          <p class="service-desc">Fio liso e sedoso por até 6 meses. Sem fritar o cabelo.</p>
+          <p class="service-price">A partir de <strong>R$ 150</strong></p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">👰</div>
+          <h3 class="service-name">Penteado & Maquiagem</h3>
+          <p class="service-desc">Para festas, casamentos e eventos especiais.</p>
+          <p class="service-price">A partir de <strong>R$ 100</strong></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== GALERIA ========== -->
+  <section class="section section-dark" id="galeria">
+    <div class="container">
+      <p class="section-eyebrow light">Nosso trabalho</p>
+      <h2 class="section-title light">Galeria</h2>
+
+      <div class="gallery-grid" id="gallery-grid">
+        <!-- As fotos vão aqui. Por enquanto, usamos placeholders coloridos. -->
+        <!-- Quando tiver fotos reais, substitua os <div> por <img src="img/galeria/foto1.jpg" alt="..."> -->
+        <div class="gallery-item" style="background:#c9a96e;" data-label="Coloração"></div>
+        <div class="gallery-item" style="background:#8b6347;" data-label="Corte"></div>
+        <div class="gallery-item" style="background:#d4b8a0;" data-label="Escova"></div>
+        <div class="gallery-item" style="background:#a07850;" data-label="Manicure"></div>
+        <div class="gallery-item" style="background:#e8d5c0;" data-label="Penteado"></div>
+        <div class="gallery-item" style="background:#b08060;" data-label="Tratamento"></div>
+      </div>
+
+      <p class="gallery-note">📸 Fotos reais em breve — substituir os placeholders pelas fotos do salão</p>
+    </div>
+  </section>
+
+  <!-- ========== SOBRE ========== -->
+  <section class="section" id="sobre">
+    <div class="container sobre-grid">
+      <div class="sobre-text">
+        <p class="section-eyebrow">Quem somos</p>
+        <h2 class="section-title">Sobre o Salão</h2>
+        <p class="sobre-desc">
+          O <strong>Bella Donna</strong> nasceu do sonho de trazer para Currais Novos um salão que une técnica, carinho e um atendimento que faz você se sentir em casa.
+        </p>
+        <p class="sobre-desc">
+          Com mais de <strong>10 anos de experiência</strong>, nossa equipe está sempre atualizada com as tendências e técnicas do mercado — porque você merece o melhor, aqui pertinho de casa.
+        </p>
+        <div class="sobre-stats">
+          <div class="stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Anos de experiência</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Clientes satisfeitas</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Serviços disponíveis</span>
+          </div>
+        </div>
+      </div>
+      <div class="sobre-img">
+        <!-- Substituir pela foto da fachada ou da equipe -->
+        <div class="sobre-img-placeholder">📸<br/>Foto da<br/>equipe</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== AGENDAMENTO ========== -->
+  <section class="section section-accent" id="agendamento">
+    <div class="container">
+      <p class="section-eyebrow light">Marque seu horário</p>
+      <h2 class="section-title light">Agendamento</h2>
+      <p class="agendar-desc">Preencha o formulário e entraremos em contato pelo WhatsApp para confirmar seu horário.</p>
+
+      <form class="agendar-form" id="agendar-form" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nome">Seu nome *</label>
+            <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required />
+            <span class="form-error" id="erro-nome"></span>
+          </div>
+          <div class="form-group">
+            <label for="telefone">WhatsApp *</label>
+            <input type="tel" id="telefone" name="telefone" placeholder="(84) 99999-9999" required />
+            <span class="form-error" id="erro-telefone"></span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="servico">Serviço desejado *</label>
+            <select id="servico" name="servico" required>
+              <option value="">Selecione um serviço</option>
+              <option value="Corte Feminino">Corte Feminino</option>
+              <option value="Coloração">Coloração</option>
+              <option value="Manicure & Pedicure">Manicure & Pedicure</option>
+              <option value="Tratamento Capilar">Tratamento Capilar</option>
+              <option value="Escova Progressiva">Escova Progressiva</option>
+              <option value="Penteado & Maquiagem">Penteado & Maquiagem</option>
+            </select>
+            <span class="form-error" id="erro-servico"></span>
+          </div>
+          <div class="form-group">
+            <label for="data">Data preferida *</label>
+            <input type="date" id="data" name="data" required />
+            <span class="form-error" id="erro-data"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="mensagem">Alguma observação? (opcional)</label>
+          <textarea id="mensagem" name="mensagem" rows="3" placeholder="Ex: prefiro horário pela manhã, tenho cabelo quimicamente tratado..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">
+          Enviar pelo WhatsApp 💬
+        </button>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ========== CONTATO ========== -->
+  <section class="section" id="contato">
+    <div class="container contato-grid">
+
+      <div class="contato-info">
+        <p class="section-eyebrow">Onde estamos</p>
+        <h2 class="section-title">Contato</h2>
+
+        <ul class="contato-list">
+          <li>
+            <span class="contato-icon">📍</span>
+            <div>
+              <strong>Endereço</strong><br/>
+              Rua Exemplo, 123 — Centro<br/>Currais Novos, RN
+            </div>
+          </li>
+          <li>
+            <span class="contato-icon">📱</span>
+            <div>
+              <strong>WhatsApp</strong><br/>
+              <a href="https://wa.me/5584999999999" target="_blank">(84) 99999-9999</a>
+            </div>
+          </li>
+          <li>
+            <span class="contato-icon">🕐</span>
+            <div>
+              <strong>Horário</strong><br/>
+              Seg–Sex: 8h às 18h<br/>
+              Sábado: 8h às 14h
+            </div>
+          </li>
+          <li>
+            <span class="contato-icon">📸</span>
+            <div>
+              <strong>Instagram</strong><br/>
+              <a href="https://instagram.com/seuinstagram" target="_blank">@belladonna.cn</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Google Maps embed — substitua o src pelo link real do seu salão -->
+      <div class="contato-mapa">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31528.!2d-36.52!3d-6.26!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTUnMzYuMCJTIDM2wrAzMScxMi4wIlc!5e0!3m2!1spt-BR!2sbr!4v1620000000000"
+          width="100%"
+          height="300"
+          style="border:0; border-radius:12px;"
+          allowfullscreen=""
+          loading="lazy"
+          title="Localização do Salão Bella Donna">
+        </iframe>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-logo">Bella <span>Donna</span></p>
+      <p class="footer-copy">© 2025 Salão Bella Donna · Currais Novos, RN</p>
+      <a href="https://wa.me/5584999999999" target="_blank" class="footer-whatsapp">
+        💬 Fale conosco
+      </a>
+    </div>
+  </footer>
+
+  <!-- ========== BOTÃO FLUTUANTE WHATSAPP ========== -->
+  <a href="https://wa.me/5584999999999?text=Olá!%20Gostaria%20de%20agendar%20um%20horário."
+     class="whatsapp-float"
+     target="_blank"
+     aria-label="Falar no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+      <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.857L.057 23.882a.5.5 0 0 0 .614.635l6.189-1.623A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.807 9.807 0 0 1-5.031-1.383l-.361-.214-3.733.979.995-3.638-.235-.374A9.818 9.818 0 0 1 2.182 12C2.182 6.57 6.57 2.182 12 2.182c5.43 0 9.818 4.388 9.818 9.818 0 5.43-4.388 9.818-9.818 9.818z"/>
+    </svg>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

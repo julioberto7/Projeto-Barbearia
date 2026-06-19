@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espaço Multi — Móveis de Alto Padrão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg-primary:    #0A0A0A;
+      --bg-secondary:  #141414;
+      --bg-card:       #1E1E1E;
+      --border:        #2E2E2E;
+      --text-primary:  #FFFFFF;
+      --text-muted:    #A0A0A0;
+      --text-faint:    #444444;
+      --gold:          #C9A84C;
+      --gold-dark:     #a8882e;
+      --font-display:  'Playfair Display', Georgia, serif;
+      --font-body:     'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; width: 100%; object-fit: cover; }
+    button { cursor: pointer; font-family: var(--font-body); }
+
+    /* ── UTILITIES ─────────────────────────────────────────── */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 0.5px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--bg-primary);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-dark); }
+
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 0.5px solid var(--border);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--text-muted); color: var(--text-muted); }
+
+    .see-all {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      transition: gap 0.2s;
+    }
+    .see-all:hover { gap: 14px; }
+    .see-all svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── NAVBAR ─────────────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: var(--bg-primary);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .logo { line-height: 1; }
+    .logo-espaco { display: block; font-size: 20px; font-weight: 400; letter-spacing: 3px; color: var(--text-primary); }
+    .logo-multi  { display: block; font-size: 12px; font-weight: 300; letter-spacing: 5px; color: var(--text-muted); text-align: right; margin-top: 3px; }
+
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text-primary); }
+
+    .nav-cta {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 0.5px solid var(--gold);
+      background: transparent;
+      padding: 10px 22px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-cta:hover { background: var(--gold); color: var(--bg-primary); }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 88vh;
+      background: var(--bg-secondary);
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 60px;
+    }
+
+    .hero-content .eyebrow { margin-bottom: 24px; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 4.5vw, 60px);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+    .hero-title em { color: var(--gold); font-style: italic; }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    .hero-visual {
+      position: relative;
+      overflow: hidden;
+      background: var(--bg-card);
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.85;
+      transition: opacity 0.4s;
+    }
+    .hero-visual:hover img { opacity: 1; }
+
+    /* placeholder quando não há imagem */
+    .hero-placeholder {
+      width: 100%;
+      height: 100%;
+      min-height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: var(--text-faint);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .hero-placeholder svg { width: 48px; height: 48px; stroke: var(--text-faint); fill: none; stroke-width: 1; }
+
+    /* ── STATS ──────────────────────────────────────────────── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .stat {
+      padding: 32px 60px;
+      border-right: 0.5px solid var(--border);
+    }
+    .stat:last-child { border-right: none; }
+
+    .stat-number {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 36px;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ── SECTIONS ───────────────────────────────────────────── */
+    .section { padding: 80px 60px; }
+    .section-alt { background: var(--bg-secondary); }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: 34px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-top: 10px;
+    }
+
+    /* ── CATEGORIES ─────────────────────────────────────────── */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .category {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      padding: 36px 24px;
+      text-align: center;
+      transition: border-color 0.25s, transform 0.25s;
+      cursor: pointer;
+    }
+    .category:hover { border-color: var(--gold); transform: translateY(-3px); }
+
+    .category-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .category-icon svg { width: 36px; height: 36px; stroke: var(--gold); fill: none; stroke-width: 1.3; }
+
+    .category-name {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .category-count { font-size: 12px; color: var(--text-muted); }
+
+    /* ── PRODUCTS ───────────────────────────────────────────── */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      transition: border-color 0.25s;
+      cursor: pointer;
+    }
+    .product-card:hover { border-color: var(--gold); }
+
+    .product-img {
+      width: 100%;
+      height: 260px;
+      background: #252525;
+      overflow: hidden;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .product-img img { height: 100%; width: 100%; object-fit: cover; transition: transform 0.4s; }
+    .product-card:hover .product-img img { transform: scale(1.04); }
+
+    /* placeholder de imagem */
+    .product-img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text-faint);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .product-img-placeholder svg { width: 32px; height: 32px; stroke: var(--text-faint); fill: none; stroke-width: 1; }
+
+    .product-info { padding: 24px; }
+
+    .product-category {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .product-name {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
+
+    .product-price {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .product-price strong { color: var(--gold); font-size: 17px; font-weight: 400; }
+
+    .product-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .product-link {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      transition: color 0.2s;
+    }
+    .product-link:hover { color: var(--gold); }
+
+    /* ── BANNER CTA ─────────────────────────────────────────── */
+    .banner {
+      margin: 0 60px 80px;
+      padding: 60px 80px;
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .banner-text .eyebrow { margin-bottom: 14px; }
+
+    .banner-title {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--text-primary);
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    .banner-sub {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────── */
+    .footer {
+      background: var(--bg-primary);
+      border-top: 0.5px solid var(--border);
+      padding: 60px 60px 0;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand .logo { margin-bottom: 20px; }
+
+    .footer-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 260px;
+    }
+
+    .footer-col h4 {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-col a {
+      display: block;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--text-primary); }
+
+    .footer-bottom {
+      margin-top: 48px;
+      padding: 20px 60px;
+      border-top: 0.5px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { font-size: 12px; color: var(--text-faint); }
+
+    .social { display: flex; gap: 20px; }
+    .social a {
+      font-size: 13px;
+      color: var(--text-faint);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .social a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .navbar, .stat, .section, .banner { padding-left: 32px; padding-right: 32px; }
+      .banner { margin-left: 32px; margin-right: 32px; }
+      .footer { padding: 48px 32px 0; grid-template-columns: 1fr 1fr; }
+      .footer-bottom { padding: 20px 32px; }
+      .hero-title { font-size: 38px; }
+      .categories { grid-template-columns: repeat(2, 1fr); }
+      .products { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .navbar { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 320px; }
+      .hero-content { padding: 48px 20px; }
+      .stats { grid-template-columns: 1fr; }
+      .stat { border-right: none; border-bottom: 0.5px solid var(--border); padding: 24px 20px; }
+      .stat:last-child { border-bottom: none; }
+      .section { padding: 48px 20px; }
+      .categories { grid-template-columns: repeat(2, 1fr); }
+      .products { grid-template-columns: 1fr; }
+      .banner { flex-direction: column; margin: 0 20px 48px; padding: 40px 28px; }
+      .footer { grid-template-columns: 1fr; padding: 40px 20px 0; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 16px; padding: 20px; text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAVBAR ──────────────────────────────────────────────── -->
+  <header class="navbar">
+    <a href="index.html" class="logo" aria-label="Espaço Multi — página inicial">
+      <span class="logo-espaco">Espaço</span>
+      <span class="logo-multi">multi</span>
+    </a>
+
+    <nav aria-label="Menu principal">
+      <ul class="nav-links">
+        <li><a href="catalogo.html">Catálogo</a></li>
+        <li><a href="ambientes.html">Ambientes</a></li>
+        <li><a href="sobre.html">Sobre</a></li>
+        <li><a href="contato.html">Contato</a></li>
+      </ul>
+    </nav>
+
+    <button class="nav-cta" onclick="window.location.href='contato.html'">Solicitar visita</button>
+  </header>
+
+  <!-- ── HERO ────────────────────────────────────────────────── -->
+  <section class="hero" aria-label="Apresentação">
+    <div class="hero-content">
+      <p class="eyebrow">Nova coleção 2025</p>
+      <h1 class="hero-title">
+        Móveis que definem<br>
+        <em>ambientes únicos</em>
+      </h1>
+      <p class="hero-sub">
+        Design exclusivo e acabamento de alto padrão para transformar cada espaço em uma experiência de vida incomparável.
+      </p>
+      <div class="hero-actions">
+        <a href="catalogo.html" class="btn-primary">Ver catálogo</a>
+        <a href="sobre.html" class="btn-secondary">Sobre a loja</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <!--
+        SUBSTITUA o src abaixo pelo caminho da sua foto principal.
+        Exemplo: <img src="assets/hero.jpg" alt="Sala de estar com sofá Bergamo" />
+      -->
+      <div class="hero-placeholder" aria-hidden="true">
+        <svg viewBox="0 0 48 48"><rect x="4" y="10" width="40" height="28" rx="2"/><polyline points="4,38 16,24 24,30 32,20 44,38"/><circle cx="34" cy="18" r="3"/></svg>
+        Inserir foto principal
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ───────────────────────────────────────────────── -->
+  <div class="stats" aria-label="Números da loja">
+    <div class="stat">
+      <span class="stat-number">+500</span>
+      <span class="stat-label">Produtos exclusivos</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">15</span>
+      <span class="stat-label">Anos de mercado</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">+1.200</span>
+      <span class="stat-label">Clientes satisfeitos</span>
+    </div>
+  </div>
+
+  <!-- ── CATEGORIES ──────────────────────────────────────────── -->
+  <section class="section section-alt" aria-labelledby="cats-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Explore</p>
+        <h2 class="section-heading" id="cats-heading">Categorias</h2>
+      </div>
+      <a href="catalogo.html" class="see-all">
+        Ver todas
+        <svg viewBox="0 0 16 16" aria-hidden="true"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+
+    <div class="categories">
+      <a href="catalogo.html?cat=sala" class="category">
+        <div class="category-icon" aria-hidden="true">
+          <svg viewBox="0 0 36 36"><rect x="3" y="18" width="30" height="8" rx="2"/><rect x="6" y="10" width="8" height="10" rx="1"/><rect x="22" y="10" width="8" height="10" rx="1"/><line x1="8" y1="26" x2="8" y2="32"/><line x1="28" y1="26" x2="28" y2="32"/></svg>
+        </div>
+        <span class="category-name">Salas</span>
+        <span class="category-count">48 peças</span>
+      </a>
+      <a href="catalogo.html?cat=quarto" class="category">
+        <div class="category-icon" aria-hidden="true">
+          <svg viewBox="0 0 36 36"><rect x="3" y="20" width="30" height="8" rx="1"/><rect x="3" y="14" width="30" height="8" rx="1"/><rect x="5" y="8" width="10" height="8" rx="1"/><rect x="21" y="8" width="10" height="8" rx="1"/><line x1="5" y1="28" x2="5" y2="33"/><line x1="31" y1="28" x2="31" y2="33"/></svg>
+        </div>
+        <span class="category-name">Quartos</span>
+        <span class="category-count">36 peças</span>
+      </a>
+      <a href="catalogo.html?cat=cozinha" class="category">
+        <div class="category-icon" aria-hidden="true">
+          <svg viewBox="0 0 36 36"><rect x="3" y="8" width="30" height="20" rx="2"/><line x1="3" y1="16" x2="33" y2="16"/><line x1="18" y1="8" x2="18" y2="28"/><circle cx="9" cy="12" r="1.5"/><circle cx="27" cy="12" r="1.5"/></svg>
+        </div>
+        <span class="category-name">Cozinhas</span>
+        <span class="category-count">29 peças</span>
+      </a>
+      <a href="catalogo.html?cat=escritorio" class="category">
+        <div class="category-icon" aria-hidden="true">
+          <svg viewBox="0 0 36 36"><rect x="4" y="8" width="28" height="18" rx="2"/><line x1="4" y1="26" x2="32" y2="26"/><rect x="13" y="26" width="10" height="4"/><line x1="10" y1="30" x2="26" y2="30"/></svg>
+        </div>
+        <span class="category-name">Home office</span>
+        <span class="category-count">22 peças</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── PRODUCTS ─────────────────────────────────────────────── -->
+  <section class="section" aria-labelledby="prod-heading">
+    <div class="section-header">
+      <div>
+        <p class="eyebrow">Destaques</p>
+        <h2 class="section-heading" id="prod-heading">Peças em evidência</h2>
+      </div>
+      <a href="catalogo.html" class="see-all">
+        Ver catálogo
+        <svg viewBox="0 0 16 16" aria-hidden="true"><line x1="2" y1="8" x2="14" y2="8"/><polyline points="9,3 14,8 9,13"/></svg>
+      </a>
+    </div>
+
+    <div class="products">
+
+      <!-- Produto 1 -->
+      <article class="product-card">
+        <div class="product-img">
+          <!--
+            Substitua pelo caminho da imagem:
+            <img src="assets/sofa-bergamo.jpg" alt="Sofá Bergamo — couro natural" />
+          -->
+          <div class="product-img-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect x="2" y="8" width="28" height="16" rx="2"/><polyline points="2,24 10,16 16,20 22,13 30,24"/></svg>
+            Foto do produto
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Sala de estar</span>
+          <h3 class="product-name">Sofá Bergamo</h3>
+          <p class="product-price"><strong>R$ 8.900</strong></p>
+          <div class="product-action">
+            <a href="produto.html" class="product-link">Ver detalhes</a>
+            <a href="contato.html" class="btn-primary" style="font-size:10px; padding:10px 18px;">Solicitar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 2 -->
+      <article class="product-card">
+        <div class="product-img">
+          <div class="product-img-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect x="2" y="8" width="28" height="16" rx="2"/><polyline points="2,24 10,16 16,20 22,13 30,24"/></svg>
+            Foto do produto
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Quarto</span>
+          <h3 class="product-name">Cama Palazzo</h3>
+          <p class="product-price"><strong>R$ 12.500</strong></p>
+          <div class="product-action">
+            <a href="produto.html" class="product-link">Ver detalhes</a>
+            <a href="contato.html" class="btn-primary" style="font-size:10px; padding:10px 18px;">Solicitar</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Produto 3 -->
+      <article class="product-card">
+        <div class="product-img">
+          <div class="product-img-placeholder" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect x="2" y="8" width="28" height="16" rx="2"/><polyline points="2,24 10,16 16,20 22,13 30,24"/></svg>
+            Foto do produto
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="product-category">Sala de jantar</span>
+          <h3 class="product-name">Mesa Veneza</h3>
+          <p class="product-price"><strong>R$ 6.200</strong></p>
+          <div class="product-action">
+            <a href="produto.html" class="product-link">Ver detalhes</a>
+            <a href="contato.html" class="btn-primary" style="font-size:10px; padding:10px 18px;">Solicitar</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ── BANNER CTA ────────────────────────────────────────────── -->
+  <div class="banner" role="complementary" aria-label="Consultoria personalizada">
+    <div class="banner-text">
+      <p class="eyebrow">Atendimento exclusivo</p>
+      <h2 class="banner-title">Consultoria de ambientes<br>personalizada</h2>
+      <p class="banner-sub">
+        Nossa equipe de especialistas ajuda você a criar o espaço perfeito — do projeto à entrega, com atendimento dedicado do início ao fim.
+      </p>
+    </div>
+    <a href="contato.html" class="btn-primary" style="white-space: nowrap; flex-shrink: 0;">Agendar consulta</a>
+  </div>
+
+  <!-- ── FOOTER ────────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Rodapé">
+    <div class="footer-brand">
+      <div class="logo">
+        <span class="logo-espaco">Espaço</span>
+        <span class="logo-multi">multi</span>
+      </div>
+      <p class="footer-desc">
+        Design de alto padrão para quem valoriza cada detalhe do seu espaço. Móveis exclusivos com entrega e montagem especializada.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Catálogo</h4>
+      <a href="catalogo.html?cat=sala">Salas</a>
+      <a href="catalogo.html?cat=quarto">Quartos</a>
+      <a href="catalogo.html?cat=cozinha">Cozinhas</a>
+      <a href="catalogo.html?cat=escritorio">Home Office</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>A loja</h4>
+      <a href="sobre.html">Nossa história</a>
+      <a href="sobre.html#diferenciais">Diferenciais</a>
+      <a href="sobre.html#parceiros">Parceiros</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <a href="https://wa.me/5500000000000" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:contato@espacomulti.com.br">E-mail</a>
+      <a href="contato.html">Visitar loja</a>
+    </div>
+  </footer>
+
+  <div class="footer-bottom">
+    <p class="footer-copy">© 2025 Espaço Multi. Todos os direitos reservados.</p>
+    <nav class="social" aria-label="Redes sociais">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">Facebook</a>
+      <a href="#" target="_blank" rel="noopener">Pinterest</a>
+    </nav>
+  </div>
+
+</body>
+</html>
