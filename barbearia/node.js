@@ -116,7 +116,7 @@ form.addEventListener('submit', (e) => {
     ? `\n📝 Observação: ${mensagem.value.trim()}`
     : '';
 
-  const texto = `Olá! Gostaria de agendar um horário:\n\n` +
+  const texto = `Olá! Olá! Vim pelo site e gostaria de agendar um horário:\n\n` +
     `👤 Nome: ${nome.value.trim()}\n` +
     `💇 Serviço: ${servico.value}\n` +
     `📅 Data preferida: ${dataFormatada}\n` +
