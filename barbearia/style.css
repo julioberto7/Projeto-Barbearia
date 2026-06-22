@@ -85,26 +85,26 @@
   /* ══════════════════════════════
      NAVEGAÇÃO (header fixo no topo)
      ══════════════════════════════ */
-  --cor-nav-fundo:       rgba(240, 242, 240, 0.96); /* fundo semitransparente do header */
+  --cor-nav-fundo:       rgba(0, 0, 0, 0.96); /* fundo semitransparente do header */
   --cor-nav-borda:       #d0d5d0;                   /* linha embaixo do header */
   --cor-nav-logo:        rgb(0, 0, 0);              /* cor do texto "Barber" no logo */
   --cor-nav-logo-span:   rgb(59, 114, 11);          /* cor do "Shop" no logo */
-  --cor-nav-link:        #5a6a5a;                   /* links do menu (Início, Serviços...) */
+  --cor-nav-link:        #ffffff;                   /* links do menu (Início, Serviços...) */
   --cor-nav-link-hover:  rgb(59, 114, 11);          /* links ao passar o mouse */
-  --cor-nav-cta-fundo:   rgb(59, 114, 11);          /* fundo do botão "Agendar" */
-  --cor-nav-cta-texto:   #ffffff;                   /* texto do botão "Agendar" */
+  --cor-nav-cta-fundo:   rgb(70, 74, 71);          /* fundo do botão "Agendar" */
+  --cor-nav-cta-texto:   #e0e0e0;                  /* texto do botão "Agendar" */
   --cor-nav-hamburguer:  rgb(0, 0, 0);              /* cor das linhas do menu mobile */
 
   /* ══════════════════════════════
      HERO (primeira tela / banner)
      ══════════════════════════════ */
-  --cor-hero-fundo-1:   #1a2412;                   /* início do degradê (canto superior esquerdo) */
-  --cor-hero-fundo-2:   #2d3a22;                   /* meio do degradê */
-  --cor-hero-fundo-3:   #4a5e3a;                   /* fim do degradê (canto inferior direito) */
+  --cor-hero-fundo-1:   #6a6a6a;                   /* início do degradê (canto superior esquerdo) */
+  --cor-hero-fundo-2:   #000000;                   /* meio do degradê */
+  --cor-hero-fundo-3:   #5c5555;                   /* fim do degradê (canto inferior direito) */
   --cor-hero-overlay:   rgba(20, 28, 14, 0.5);     /* escurecimento sobre o fundo */
-  --cor-hero-eyebrow:   #4c7439;                   /* texto pequeno "Barbearia em Currais Novos" */
+  --cor-hero-eyebrow:   #fefffe;                   /* texto pequeno "Barbearia em Currais Novos" */
   --cor-hero-titulo:    #ffffff;                   /* título principal "Estilo é coisa séria" */
-  --cor-hero-titulo-em: #4c7439;                   /* palavra em itálico no título */
+  --cor-hero-titulo-em: #4a9b24;                   /* palavra em itálico no título */
   --cor-hero-desc:      rgba(255, 255, 255, 0.8);  /* subtítulo/descrição */
 
   /* ══════════════════════════════
@@ -112,7 +112,7 @@
      ══════════════════════════════ */
   --cor-servicos-fundo:  #3b4e3b;    /* fundo da seção inteira de serviços */
   --cor-card-fundo:      #ffffff;    /* fundo de cada card */
-  --cor-card-borda:      #d0d5d0;    /* borda dos cards */
+  --cor-card-borda:      #0d580d;    /* borda dos cards */
   --cor-card-topo:       rgb(59, 114, 11); /* barra colorida no topo do card */
   --cor-card-titulo:     rgb(0, 0, 0);     /* título do serviço */
   --cor-card-desc:       #5a6a5a;          /* descrição do serviço */
@@ -124,20 +124,20 @@
      ══════════════════════════════ */
   --cor-planos-fundo:   rgb(0, 0, 0);          /* fundo da seção de planos */
   --cor-plano-card:     rgba(255,255,255,0.06); /* fundo de cada card de plano */
-  --cor-plano-borda:    rgba(255,255,255,0.12); /* borda dos cards de plano */
+  --cor-plano-borda:    rgba(212, 24, 24, 0.12); /* borda dos cards de plano */
   --cor-plano-nome:     #ffffff;               /* nome do plano */
-  --cor-plano-preco:    #4c7439;               /* preço do plano */
+  --cor-plano-preco:    #09731b;               /* preço do plano */
   --cor-plano-item:     rgba(255,255,255,0.7); /* itens da lista */
   --cor-plano-badge:    #4c7439;               /* cor dos badges padrão */
   --cor-plano-btn-borda: rgba(122,156,106,0.5);/* borda do botão de plano */
-  --cor-plano-btn-texto: #4c7439;              /* texto do botão de plano */
-  --cor-plano-obs:      rgba(255,255,255,0.4); /* texto de observação no rodapé dos planos */
+  --cor-plano-btn-texto: #ffffff;              /* texto do botão de plano */
+  --cor-plano-obs:      rgba(255, 255, 255, 0.4); /* texto de observação no rodapé dos planos */
 
   /* ══════════════════════════════
      GALERIA
      ══════════════════════════════ */
-  --cor-galeria-fundo:  #e8eae8;    /* fundo da seção galeria */
-  --cor-galeria-note:   #5a6a5a;    /* texto de aviso "substituir placeholders" */
+  --cor-galeria-fundo:  #6d6d6d;    /* fundo da seção galeria */
+  --cor-galeria-note:   #ffffff;    /* texto de aviso "substituir placeholders" */
   --cor-galeria-hover:  rgba(20,28,14,0.65); /* overlay escuro ao passar o mouse nas fotos */
 
   /* ══════════════════════════════
@@ -153,10 +153,10 @@
   /* ══════════════════════════════
      AGENDAMENTO (formulário)
      ══════════════════════════════ */
-  --cor-form-fundo:     rgb(59, 114, 11); /* fundo da seção de agendamento */
-  --cor-form-eyebrow:   #4c7439;          /* texto "Marque seu horário" */
-  --cor-form-titulo:    #ffffff;          /* título "Agendamento" */
-  --cor-form-desc:      rgba(255,255,255,0.75); /* descrição do formulário */
+  --cor-form-fundo:     rgb(0, 0, 0); /* fundo da seção de agendamento */
+  --cor-form-eyebrow:   #ffffff;          /* texto "Marque seu horário" */
+  --cor-form-titulo:    #37731b;          /* título "Agendamento" */
+  --cor-form-desc:      rgb(255, 255, 255); /* descrição do formulário */
   --cor-form-card:      #ffffff;          /* fundo branco do formulário */
   --cor-form-input:     #f0f2f0;          /* fundo dos campos de input */
   --cor-form-label:     #2e2e2e;          /* cor dos labels */
@@ -366,13 +366,13 @@ h1, h2, h3 {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  /* degradê de fundo — 3 cores independentes */
-  background: linear-gradient(
-    135deg,
-    var(--cor-hero-fundo-1) 0%,    /* cor mais escura (início) */
-    var(--cor-hero-fundo-2) 50%,   /* cor do meio */
-    var(--cor-hero-fundo-3) 100%   /* cor mais clara (fim) */
-  );
+
+  background: url('img/logo-hero.png') no-repeat center;
+  background-size: cover; /* ou cover, explico abaixo */
+
+  margin-top: 68px;
+
+  
   margin-top: 68px;
 }
 /* Camada escura sobre o fundo */
@@ -414,6 +414,13 @@ h1, h2, h3 {
   line-height: 1.7;
 }
 .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
+
+.hero::before {
+  content: "";
+  position: absolute; 
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+}
 
 
 /* ─────────────────────────────────────────
@@ -894,4 +901,61 @@ h1, h2, h3 {
 @media (max-width: 480px) {
   .gallery-grid  { grid-template-columns: 1fr 1fr; }
   .services-grid { grid-template-columns: 1fr; }
+}
+
+
+/* ─────────────────────────────────────────
+   16. LOGO DA BARBEARIA
+   logo-hero.png → hero (logo metálica grande)
+   logo.png      → header e footer (logo preta menor)
+───────────────────────────────────────── */
+
+/* ── HEADER: logo preta no fundo claro ── */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 4px 0;
+}
+.nav-logo-img {
+  height: 54px;              /* altura no menu — aumente ou diminua aqui */
+  width: auto;
+  object-fit: contain;
+  image-rendering: -webkit-optimize-contrast; /* mais nítida em telas normais */
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15)); /* leve sombra para destacar */
+}
+
+/* ── HERO: logo metálica grande centralizada ── */
+.hero-logo {
+  width: min(420px, 85%);    /* largura máxima — responsivo automaticamente */
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 28px;
+  display: block;
+  /* Remove fundo cinza da screenshot, mantendo só a logo */
+  border-radius: 16px;
+  overflow: hidden;
+  /* Sombra suave para destacar sobre o fundo verde */
+  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+}
+
+/* ── FOOTER: logo preta sobre fundo escuro — inverte para branco ── */
+.footer-logo-img {
+  height: 42px;              /* altura no footer — ajuste aqui */
+  width: auto;
+  object-fit: contain;
+  /* Inverte a logo preta para branca no fundo escuro */
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+}
+
+/* ── RESPONSIVO ── */
+@media (max-width: 768px) {
+  .nav-logo-img    { height: 44px; }
+  .hero-logo       { width: min(300px, 90%); margin-bottom: 20px; }
+  .footer-logo-img { height: 34px; }
+}
+@media (max-width: 480px) {
+  .nav-logo-img    { height: 38px; }
+  .hero-logo       { width: min(240px, 88%); }
 }
