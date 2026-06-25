@@ -104,34 +104,34 @@
   --cor-hero-overlay:   rgba(20, 28, 14, 0.5);     /* escurecimento sobre o fundo */
   --cor-hero-eyebrow:   #fefffe;                   /* texto pequeno "Barbearia em Currais Novos" */
   --cor-hero-titulo:    #ffffff;                   /* título principal "Estilo é coisa séria" */
-  --cor-hero-titulo-em: #4a9b24;                   /* palavra em itálico no título */
+  --cor-hero-titulo-em: #000000;                   /* palavra em itálico no título */
   --cor-hero-desc:      rgba(255, 255, 255, 0.8);  /* subtítulo/descrição */
 
   /* ══════════════════════════════
      SERVIÇOS
      ══════════════════════════════ */
-  --cor-servicos-fundo:  #3b4e3b;    /* fundo da seção inteira de serviços */
+  --cor-servicos-fundo:  #000000;    /* fundo da seção inteira de serviços */
   --cor-card-fundo:      #ffffff;    /* fundo de cada card */
-  --cor-card-borda:      #0d580d;    /* borda dos cards */
-  --cor-card-topo:       rgb(59, 114, 11); /* barra colorida no topo do card */
+  --cor-card-borda:      #ffffff;    /* borda dos cards */
+  --cor-card-topo:       rgb(68, 71, 66); /* barra colorida no topo do card */
   --cor-card-titulo:     rgb(0, 0, 0);     /* título do serviço */
   --cor-card-desc:       #5a6a5a;          /* descrição do serviço */
   --cor-card-preco:      #5a6a5a;          /* texto "A partir de" */
-  --cor-card-preco-val:  rgb(59, 114, 11); /* valor em destaque "R$ XX" */
+  --cor-card-preco-val:  rgb(45, 50, 41); /* valor em destaque "R$ XX" */
 
   /* ══════════════════════════════
      PLANOS
      ══════════════════════════════ */
-  --cor-planos-fundo:   rgb(0, 0, 0);          /* fundo da seção de planos */
+  --cor-planos-fundo:   rgb(73, 70, 70);          /* fundo da seção de planos */
   --cor-plano-card:     rgba(255,255,255,0.06); /* fundo de cada card de plano */
   --cor-plano-borda:    rgba(212, 24, 24, 0.12); /* borda dos cards de plano */
   --cor-plano-nome:     #ffffff;               /* nome do plano */
-  --cor-plano-preco:    #09731b;               /* preço do plano */
+  --cor-plano-preco:    #ffffff;               /* preço do plano */
   --cor-plano-item:     rgba(255,255,255,0.7); /* itens da lista */
   --cor-plano-badge:    #4c7439;               /* cor dos badges padrão */
   --cor-plano-btn-borda: rgba(122,156,106,0.5);/* borda do botão de plano */
   --cor-plano-btn-texto: #ffffff;              /* texto do botão de plano */
-  --cor-plano-obs:      rgba(255, 255, 255, 0.4); /* texto de observação no rodapé dos planos */
+  --cor-plano-obs:      rgb(255, 252, 252); /* texto de observação no rodapé dos planos */
 
   /* ══════════════════════════════
      GALERIA
@@ -232,7 +232,7 @@ h1, h2, h3 {
   font-family: var(--fonte-corpo);
   color: var(--cor-nav-cta-fundo); /* verde padrão */
 }
-.section-eyebrow.light { color: #4c7439; } /* versão clara para fundos escuros */
+.section-eyebrow.light { color: #6c6c6c; } /* versão clara para fundos escuros */
 
 /* Títulos de seção */
 .section-title {
