@@ -3,25 +3,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ludugero Barbearia | Lagoa Nova - RN</title>
-  <meta name="description" content="Ludugero Barbearia em Lagoa Nova, RN. Cortes, barba, sobrancelha, planos mensais e muito mais. Agende seu horário pelo WhatsApp." />
+  <title>Ludugero Barbearia | Início</title>
+  <meta name="description" content="Ludugero Barbearia em Lagoa Nova, RN. Conheça nossa equipe, galeria e agende seu horário." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script src="node.js"></script>
 </head>
 <body>
 
   <!-- ========== HEADER / NAV ========== -->
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#inicio" class="nav-logo"><img src="img/logo.png" alt="Ludugero Barbearia" class="nav-logo-img" /></a>
+      <a href="index.html#inicio" class="nav-logo">
+        <span class="logo-text">
+          <span class="logo-main">Ludugero</span>
+          <span class="logo-sub">Barbearia</span>
+        </span>
+      </a>
       <ul class="nav-menu" id="nav-menu">
-        <li><a href="#inicio"      class="nav-link">Início</a></li>
-        <li><a href="#servicos"    class="nav-link">Serviços</a></li>
-        <li><a href="#planos"      class="nav-link">Planos</a></li>
-        <li><a href="#galeria"     class="nav-link">Galeria</a></li>
-        <li><a href="#sobre"       class="nav-link">Sobre</a></li>
-        <li><a href="#agendamento" class="nav-link nav-cta">Agendar</a></li>
+        <li><a href="index.html#inicio"           class="nav-link">Início</a></li>
+        <li><a href="servicos.html#servicos"      class="nav-link">Serviços</a></li>
+        <li><a href="servicos.html#planos"          class="nav-link">Planos</a></li>
+         <li><a href="index.html#sobre"               class="nav-link">Sobre</a></li>
+        <li><a href="#contato"                          class="nav-link">Contato</a></li>
+        <li><a href="servicos.html#agendamento" class="nav-link nav-cta">Agendar</a></li>
       </ul>
       <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu">
         <span></span><span></span><span></span>
@@ -31,285 +37,69 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="inicio">
-    <div class="hero-overlay"></div>
     <div class="hero-content container">
       <p class="hero-eyebrow">Barbearia em Lagoa Nova, RN</p>
-      <h1 class="hero-title">conheça a melhor do  <em>seridó</em></h1>
+      <h1 class="hero-title">conheça a melhor do <em>seridó</em></h1>
       <p class="hero-desc">Cortes precisos, barba impecável e o atendimento que você merece — do jeito que homem gosta.</p>
       <div class="hero-buttons">
-        <a href="#agendamento" class="btn btn-primary">Agendar horário</a>
-        <a href="#planos"      class="btn btn-ghost">Ver planos</a>
+        <a href="servicos.html#agendamento" class="btn btn-primary">Agendar horário</a>
+        <a href="servicos.html#planos"      class="btn btn-ghost">Ver planos</a>
       </div>
     </div>
   </section>
 
-  <!-- ========== SERVIÇOS ========== -->
-  <section class="section section-servicos" id="servicos">
+  <!-- ========== EQUIPE ========== -->
+  <section class="section section-equipe" id="equipe">
     <div class="container">
-      <p class="section-eyebrow">O que fazemos</p>
-      <h2 class="section-title">Nossos Serviços</h2>
-      <div class="services-grid">
+      <p class="section-eyebrow">Quem vai te atender</p>
+      <h2 class="section-title">Nossa Equipe</h2>
+      <div class="equipe-grid">
 
-        <div class="service-card">
-          <div class="service-icon">✂️</div>
-          <h3 class="service-name">Corte</h3>
-          <p class="service-desc">Estamos preparados para fazer qualquer estilo de cabelo com o máximo de profissionalismo e satisfação.</p>
-          <p class="service-meta">⏱ 35 min</p>
-          <p class="service-price"><strong>R$ 30,00</strong></p>
+        <!-- MEMBRO 1 — Ludugero -->
+        <div class="membro-card" data-barbeiro="Ludugero">
+          <div class="membro-foto">
+            <div class="membro-foto-placeholder">
+              <p class="membro-foto-label"><img src="equipe/ludugero.jpeg" alt="Ludugero"></p>
+            </div>
+          </div>
+          <div class="membro-info">
+            <h3 class="membro-nome"><span>Ludugero</span></h3>
+            <p class="membro-cargo">Fundador &amp; Barbeiro</p>
+            <p class="membro-desc">
+              Fundador da Ludugero Barbearia, referência em Lagoa Nova. Especialista em cortes modernos, barba Prime e tratamentos capilares. Trabalha com dedicação e orgulho em cada atendimento.
+            </p>
+            <div class="membro-tags">
+              <span class="membro-tag">Cortes</span>
+              <span class="membro-tag">Barba Prime</span>
+              <span class="membro-tag">Pigmentação</span>
+              <span class="membro-tag">Platinado</span>
+            </div>
+          </div>
         </div>
 
-        <div class="service-card">
-          <div class="service-icon">🪒</div>
-          <h3 class="service-name">Barba Expresso</h3>
-          <p class="service-desc">Barba feita de uma forma mais rápida e simples para clientes que vivem na correria.</p>
-          <p class="service-meta">⏱ 20 min</p>
-          <p class="service-price"><strong>R$ 20,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">💎</div>
-          <h3 class="service-name">Barba Prime</h3>
-          <p class="service-desc">A barba mais completa da barbearia. Inclui higienização facial, hidratação dos fios, toalha quente e massagem facial.</p>
-          <p class="service-meta">⏱ 25 min</p>
-          <p class="service-price"><strong>R$ 30,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🛁</div>
-          <h3 class="service-name">Barbaterapia</h3>
-          <p class="service-desc">Barba feita com calma e auxílio de toalha quente e produtos para facilitar a remoção dos pelos da barba.</p>
-          <p class="service-meta">⏱ 20 min</p>
-          <p class="service-price"><strong>R$ 25,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⚡</div>
-          <h3 class="service-name">Corte + Barba Expresso</h3>
-          <p class="service-desc">Corte de cabelo mais barba expresso para o cliente que gosta de agilidade.</p>
-          <p class="service-meta">⏱ 50 min</p>
-          <p class="service-price"><strong>R$ 50,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🌿</div>
-          <h3 class="service-name">Corte + Barbaterapia</h3>
-          <p class="service-desc">Corte de cabelo mais barbaterapia — procedimento relaxante para clientes que gostam de se cuidar.</p>
-          <p class="service-meta">⏱ 50 min</p>
-          <p class="service-price"><strong>R$ 55,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">👦</div>
-          <h3 class="service-name">Corte Infantil</h3>
-          <p class="service-desc">Corte de cabelo em criança, com todo cuidado e atenção com os pequenos amiguinhos.</p>
-          <p class="service-meta">⏱ 30 min</p>
-          <p class="service-price"><strong>R$ 30,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">👁️</div>
-          <h3 class="service-name">Sobrancelha</h3>
-          <p class="service-desc">Alinhamento de sobrancelhas masculinas.</p>
-          <p class="service-meta">⏱ 5 min</p>
-          <p class="service-price"><strong>R$ 10,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">💧</div>
-          <h3 class="service-name">Hidratação Capilar</h3>
-          <p class="service-desc">Procedimento feito para cuidados de hidratação e reconstrução capilar.</p>
-          <p class="service-meta">⏱ 10 min</p>
-          <p class="service-price"><strong>R$ 10,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">✨</div>
-          <h3 class="service-name">Luzes</h3>
-          <p class="service-desc">Mechas no cabelo da cor desejada pelo cliente.</p>
-          <p class="service-meta">⏱ 45 min</p>
-          <p class="service-price"><strong>R$ 50,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🎨</div>
-          <h3 class="service-name">Pigmentação da Barba</h3>
-          <p class="service-desc">Procedimento que preenche falhas naturais da barba.</p>
-          <p class="service-meta">⏱ 25 min</p>
-          <p class="service-price"><strong>R$ 25,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🖌️</div>
-          <h3 class="service-name">Pigmentação no Cabelo</h3>
-          <p class="service-desc">A famosa pigmentação capilar para cobrir falhas naturais do cabelo.</p>
-          <p class="service-meta">⏱ 30 min</p>
-          <p class="service-price"><strong>R$ 30,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">⬜</div>
-          <h3 class="service-name">Platinado / Nevou</h3>
-          <p class="service-desc">Descoloração completa do cabelo.</p>
-          <p class="service-meta">⏱ 50 min</p>
-          <p class="service-price"><strong>R$ 100,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">〰️</div>
-          <h3 class="service-name">Selagem</h3>
-          <p class="service-desc">Procedimento que faz redução de volume e realinhamento capilar.</p>
-          <p class="service-meta">⏱ 40 min</p>
-          <p class="service-price"><strong>R$ 90,00</strong></p>
-        </div>
-
-        <div class="service-card">
-          <div class="service-icon">🇺🇸</div>
-          <h3 class="service-name">Alisamento Americano</h3>
-          <p class="service-desc">Procedimento que realinha o cabelo.</p>
-          <p class="service-meta">⏱ 30 min</p>
-          <p class="service-price"><strong>R$ 35,00</strong></p>
+        <!-- MEMBRO 2 — Alan -->
+        <div class="membro-card" data-barbeiro="Alan">
+          <div class="membro-foto">
+            <div class="membro-foto-placeholder">
+              <p class="membro-foto-label"><img src="equipe/alan.jpg" alt="Alan"></p>
+            </div>
+          </div>
+          <div class="membro-info">
+            <h3 class="membro-nome"><span>Alan</span></h3>
+            <p class="membro-cargo">Barbeiro</p>
+            <p class="membro-desc">
+              Habilidoso nas tesouras e navalha, Alan é referência em acabamentos limpos e barbas bem cuidadas. Atende com agilidade e atenção, garantindo a satisfação de cada cliente.
+            </p>
+            <div class="membro-tags">
+              <span class="membro-tag">Cortes</span>
+              <span class="membro-tag">Barba Expresso</span>
+              <span class="membro-tag">Barbaterapia</span>
+              <span class="membro-tag">Sobrancelha</span>
+            </div>
+          </div>
         </div>
 
       </div>
-    </div>
-  </section>
-
-  <!-- ========== PLANOS ========== -->
-  <section class="section section-planos" id="planos">
-    <div class="container">
-      <p class="section-eyebrow light">Assinatura mensal</p>
-      <h2 class="section-title light">Planos da Barbearia</h2>
-      <p class="planos-desc">Assine um plano e use à vontade — serviços ilimitados com prioridade no agendamento. Disponíveis de segunda a quinta.</p>
-
-      <div class="planos-grid">
-
-        <!-- Plano Só Barba -->
-        <div class="plano-card">
-          <div class="plano-header">
-            <p class="plano-nome">Só Barba</p>
-            <p class="plano-preco">R$ 39<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Barba ilimitada</li>
-            <li>✔ Disponível seg–qui</li>
-            <li>✔ Agendamento prioritário</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Só Corte -->
-        <div class="plano-card">
-          <div class="plano-header">
-            <p class="plano-nome">Só Corte</p>
-            <p class="plano-preco">R$ 79<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Disponível seg–qui</li>
-            <li>✔ Agendamento prioritário</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Corte + Sobrancelha -->
-        <div class="plano-card">
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Sobrancelha</p>
-            <p class="plano-preco">R$ 89<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Sobrancelha ilimitada</li>
-            <li>✔ Disponível seg–qui</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Bronze -->
-        <div class="plano-card plano-destaque">
-          <div class="plano-badge">🥉 Bronze</div>
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Barba Expresso</p>
-            <p class="plano-preco">R$ 99<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Barba expresso ilimitada</li>
-            <li>✔ Disponível seg–qui</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Prata -->
-        <div class="plano-card plano-popular">
-          <div class="plano-badge popular">🥈 Prata — Mais Popular</div>
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Barbaterapia + Sobrancelha</p>
-            <p class="plano-preco">R$ 109<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Barbaterapia ilimitada</li>
-            <li>✔ Sobrancelha inclusa</li>
-            <li>✔ Disponível seg–qui</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Ouro -->
-        <div class="plano-card plano-destaque">
-          <div class="plano-badge ouro">🥇 Ouro</div>
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Barba Prime + Sobrancelha</p>
-            <p class="plano-preco">R$ 119<span>,99/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Barba Prime ilimitada</li>
-            <li>✔ Sobrancelha inclusa</li>
-            <li>✔ Disponível seg–qui</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Diamante -->
-        <div class="plano-card plano-diamante">
-          <div class="plano-badge diamante">💎 Diamante</div>
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Barba Prime + Sobrancelha + Hidratação</p>
-            <p class="plano-preco">R$ 140<span>,00/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado</li>
-            <li>✔ Barba Prime ilimitada</li>
-            <li>✔ Sobrancelha inclusa</li>
-            <li>✔ Hidratação capilar inclusa</li>
-            <li>✔ <strong>Disponível todos os dias</strong></li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-        <!-- Plano Exclusivo -->
-        <div class="plano-card plano-exclusivo">
-          <div class="plano-badge exclusivo">👨‍👦 Exclusivo Família</div>
-          <div class="plano-header">
-            <p class="plano-nome">Corte + Barba + Sobrancelha + 2 Cortes Infantil</p>
-            <p class="plano-preco">R$ 185<span>,00/mês</span></p>
-          </div>
-          <ul class="plano-itens">
-            <li>✔ Corte ilimitado (pai)</li>
-            <li>✔ Barba ilimitada (pai)</li>
-            <li>✔ Sobrancelha inclusa</li>
-            <li>✔ 2 cortes infantis/mês</li>
-            <li>✔ Para filhos até 13 anos</li>
-            <li>✔ Disponível seg–qui</li>
-          </ul>
-          <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
-        </div>
-
-      </div>
-
-      <p class="planos-obs">* Planos sem fidelidade. Cancele quando quiser. Serviços disponíveis de segunda a quinta, exceto Diamante (todos os dias).</p>
     </div>
   </section>
 
@@ -319,12 +109,12 @@
       <p class="section-eyebrow">Nosso trabalho</p>
       <h2 class="section-title">Galeria</h2>
       <div class="gallery-grid" id="gallery-grid">
-        <div class="gallery-item" style="background:#4a5e3a;" data-label="Corte Degradê"></div>
-        <div class="gallery-item" style="background:#2d3a22;" data-label="Barba Prime"></div>
-        <div class="gallery-item" style="background:#7a9c6a;" data-label="Corte + Barba"></div>
-        <div class="gallery-item" style="background:#5a7a4a;" data-label="Barbaterapia"></div>
-        <div class="gallery-item" style="background-image: url('galeria/pigmentacao1.png'); background-size: cover; background-position: center;" data-label="Pigmentação"></div>
-        <div class="gallery-item" style="background:#6b8c5a;" data-label="Corte Infantil"></div>
+        <div class="gallery-item" style="background:#2a2c2f;" data-label="Corte Degradê"></div>
+        <div class="gallery-item" style="background:#1e2022;" data-label="Barba Prime"></div>
+        <div class="gallery-item" style="background:#333538;" data-label="Corte + Barba"></div>
+        <div class="gallery-item" style="background:#252729;" data-label="Barbaterapia"></div>
+        <div class="gallery-item" style="background-image:url('galeria/pigmentacao1.png'); background-size:cover; background-position:center;" data-label="Pigmentação"></div>
+        <div class="gallery-item" style="background:#2e3033;" data-label="Corte Infantil"></div>
       </div>
     </div>
   </section>
@@ -357,87 +147,12 @@
         </div>
       </div>
       <div class="sobre-img">
-        <div class="sobre-img-placeholder">📸<br/>Foto da<br/>barbearia</div>
+        <div class="sobre-img-placeholder"><br/><img src="galeria/barbearia.jpg" alt="Barbearia" width="600" height="500"><br/></div>
       </div>
     </div>
   </section>
 
-  <!-- ========== AGENDAMENTO ========== -->
-  <section class="section section-agendamento" id="agendamento">
-    <div class="container">
-      <p class="section-eyebrow light">Marque seu horário</p>
-      <h2 class="section-title light">Agendamento</h2>
-      <p class="agendar-desc">Preencha o formulário e entraremos em contato pelo WhatsApp para confirmar seu horário.</p>
-
-      <form class="agendar-form" id="agendar-form" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label for="nome">Seu nome *</label>
-            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required />
-            <span class="form-error" id="erro-nome"></span>
-          </div>
-          <div class="form-group">
-            <label for="telefone">WhatsApp *</label>
-            <input type="tel" id="telefone" name="telefone" placeholder="(84) 99999-9999" required />
-            <span class="form-error" id="erro-telefone"></span>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label for="servico">Serviço ou plano *</label>
-            <select id="servico" name="servico" required>
-              <option value="">Selecione</option>
-              <optgroup label="Serviços avulsos">
-                <option value="Corte — R$ 30,00">Corte — R$ 30,00</option>
-                <option value="Barba Expresso — R$ 20,00">Barba Expresso — R$ 20,00</option>
-                <option value="Barba Prime — R$ 30,00">Barba Prime — R$ 30,00</option>
-                <option value="Barbaterapia — R$ 25,00">Barbaterapia — R$ 25,00</option>
-                <option value="Corte + Barba Expresso — R$ 50,00">Corte + Barba Expresso — R$ 50,00</option>
-                <option value="Corte + Barbaterapia — R$ 55,00">Corte + Barbaterapia — R$ 55,00</option>
-                <option value="Corte Infantil — R$ 30,00">Corte Infantil — R$ 30,00</option>
-                <option value="Sobrancelha — R$ 10,00">Sobrancelha — R$ 10,00</option>
-                <option value="Hidratação Capilar — R$ 10,00">Hidratação Capilar — R$ 10,00</option>
-                <option value="Luzes — R$ 50,00">Luzes — R$ 50,00</option>
-                <option value="Pigmentação da Barba — R$ 25,00">Pigmentação da Barba — R$ 25,00</option>
-                <option value="Pigmentação no Cabelo — R$ 30,00">Pigmentação no Cabelo — R$ 30,00</option>
-                <option value="Platinado / Nevou — R$ 100,00">Platinado / Nevou — R$ 100,00</option>
-                <option value="Selagem — R$ 90,00">Selagem — R$ 90,00</option>
-                <option value="Alisamento Americano — R$ 35,00">Alisamento Americano — R$ 35,00</option>
-              </optgroup>
-              <optgroup label="Planos mensais">
-                <option value="Plano Só Barba — R$ 39,99">Plano Só Barba — R$ 39,99</option>
-                <option value="Plano Só Corte — R$ 79,99">Plano Só Corte — R$ 79,99</option>
-                <option value="Plano Corte + Sobrancelha — R$ 89,99">Plano Corte + Sobrancelha — R$ 89,99</option>
-                <option value="Plano Bronze — R$ 99,99">Plano Bronze — R$ 99,99</option>
-                <option value="Plano Prata — R$ 109,99">Plano Prata — R$ 109,99</option>
-                <option value="Plano Ouro — R$ 119,99">Plano Ouro — R$ 119,99</option>
-                <option value="Plano Diamante — R$ 140,00">Plano Diamante — R$ 140,00</option>
-                <option value="Plano Exclusivo Família — R$ 185,00">Plano Exclusivo Família — R$ 185,00</option>
-              </optgroup>
-            </select>
-            <span class="form-error" id="erro-servico"></span>
-          </div>
-          <div class="form-group">
-            <label for="data">Data preferida *</label>
-            <input type="date" id="data" name="data" required />
-            <span class="form-error" id="erro-data"></span>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="mensagem">Observação (opcional)</label>
-          <textarea id="mensagem" name="mensagem" rows="3" placeholder="Ex: prefiro pela manhã, quero assinar um plano..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary btn-full">
-          Enviar pelo WhatsApp 💬
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ========== CONTATO ========== -->
+  <!-- ========== CONTATO (presente em todas as páginas) ========== -->
   <section class="section section-contato" id="contato">
     <div class="container contato-grid">
       <div class="contato-info">
@@ -476,13 +191,11 @@
           </li>
         </ul>
       </div>
-
-      <!-- Google Maps — Lagoa Nova RN -->
       <div class="contato-mapa">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d-36.458!3d-6.153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTGFnb2EgTm92YSwgUk4!5e0!3m2!1spt-BR!2sbr!4v1620000000000"
           width="100%" height="320"
-          style="border:0; border-radius:12px;"
+          style="border:0; border-radius:12px; filter:grayscale(1) contrast(1.1);"
           allowfullscreen="" loading="lazy"
           title="Localização da Ludugero Barbearia">
         </iframe>
@@ -493,13 +206,16 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <img src="img/logo.png" alt="Ludugero Barbearia" class="footer-logo-img" />
+      <div class="footer-logo-text">
+        <span class="footer-logo-main">Ludugero</span>
+        <span class="footer-logo-sub">Barbearia</span>
+      </div>
       <p class="footer-copy">© 2025 Ludugero Barbearia · Lagoa Nova, RN</p>
       <a href="https://wa.me/5584981582916" target="_blank" class="footer-whatsapp">💬 Fale conosco</a>
     </div>
   </footer>
 
-  <!-- ========== WHATSAPP FLUTUANTE ========== -->
+  <!-- WHATSAPP FLUTUANTE -->
   <a href="https://wa.me/5584981582916?text=Olá!%20Vim%20pelo%20site%20da%20Ludugero%20Barbearia%20e%20gostaria%20de%20agendar%20um%20horário."
      class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">

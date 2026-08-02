@@ -1,188 +1,101 @@
 /* ============================================
-   BARBEARIA — style.css
-   Verde Militar + Cinza Claro
-   
-   GUIA DE CORES — mude aqui para personalizar:
-   
-   --cor-nav-fundo       → fundo do menu de navegação
-   --cor-nav-logo        → cor do texto do logo
-   --cor-nav-logo-span   → cor do destaque do logo (ex: "Shop")
-   --cor-nav-link        → cor dos links do menu
-   --cor-nav-link-hover  → cor dos links ao passar o mouse
-   --cor-nav-cta-fundo   → fundo do botão "Agendar" no menu
-   --cor-nav-cta-texto   → texto do botão "Agendar" no menu
-
-   --cor-hero-fundo-1    → cor inicial do degradê do hero (fundo escuro)
-   --cor-hero-fundo-2    → cor do meio do degradê do hero
-   --cor-hero-fundo-3    → cor final do degradê do hero (mais claro)
-   --cor-hero-overlay    → camada escura sobre o hero
-   --cor-hero-eyebrow    → texto pequeno acima do título
-   --cor-hero-titulo     → cor do título principal
-   --cor-hero-titulo-em  → cor da palavra em itálico no título
-   --cor-hero-desc       → cor do subtítulo/descrição
-
-   --cor-servicos-fundo  → fundo da seção de serviços
-   --cor-card-fundo      → fundo dos cards de serviço
-   --cor-card-topo       → borda colorida no topo de cada card
-   --cor-card-titulo     → título do card
-   --cor-card-desc       → descrição do card
-   --cor-card-preco      → "A partir de" nos cards
-   --cor-card-preco-val  → valor em destaque (R$ XX)
-
-   --cor-planos-fundo    → fundo da seção de planos
-   --cor-plano-card      → fundo dos cards de plano
-   --cor-plano-nome      → nome do plano
-   --cor-plano-preco     → preço do plano
-   --cor-plano-item      → itens da lista do plano
-
-   --cor-galeria-fundo   → fundo da seção galeria
-   --cor-galeria-note    → texto de aviso da galeria
-
-   --cor-sobre-fundo     → fundo da seção sobre
-   --cor-sobre-desc      → texto de descrição
-   --cor-sobre-num       → números das estatísticas
-   --cor-sobre-label     → rótulo das estatísticas
-
-   --cor-form-fundo      → fundo da seção agendamento
-   --cor-form-card       → fundo do formulário
-   --cor-form-input      → fundo dos campos
-   --cor-form-label      → cor dos labels
-
-   --cor-contato-fundo   → fundo da seção contato
-   --cor-contato-link    → cor dos links de contato
-
-   --cor-footer-fundo    → fundo do rodapé
-   --cor-footer-logo     → cor do logo no rodapé
-   --cor-footer-copy     → texto de copyright
-   --cor-footer-wpp      → cor do link "Fale conosco"
+   LUDUGERO BARBEARIA — style.css
+   Paleta: Preto + Cinza Metálico (inspirado na logo)
+   Sem verde — acento em prata/cinza frio
 ============================================ */
 
 /* ─────────────────────────────────────────
-   1. VARIÁVEIS GLOBAIS (base do sistema)
-   Usadas internamente — não precisa mexer aqui
-   para mudar cores visuais, use as seções abaixo
+   1. VARIÁVEIS GLOBAIS
 ───────────────────────────────────────── */
 :root {
-
-  /* FONTE */
   --fonte-titulo: 'Oswald', sans-serif;
   --fonte-corpo:  'Inter', system-ui, sans-serif;
-
-  /* ESPAÇAMENTO E FORMA */
-  --sombra-card: 0 2px 16px rgba(45, 58, 34, 0.10);
   --raio:    12px;
   --raio-sm:  8px;
   --transicao: 0.3s ease;
 
-  /* ── CORES DE PLANOS ESPECIAIS ──
-     Mude aqui a cor de cada badge de plano */
-  --cor-bronze:    #a0724a;
-  --cor-prata:     #7a8a9a;
-  --cor-ouro:      #b8960a;
-  --cor-diamante:  #5a7aaa;
-  --cor-exclusivo: #8a4a6a;
+  /* PALETA EXTRAÍDA DA LOGO */
+  --preto:        #08090a;
+  --preto-soft:   #0e0f11;
+  --cinza-950:    #131416;
+  --cinza-900:    #1a1c1f;
+  --cinza-850:    #1f2124;
+  --cinza-800:    #252729;
+  --cinza-700:    #2e3135;
+  --cinza-600:    #3c4047;
+  --cinza-500:    #555a62;
+  --cinza-400:    #7a8089;
+  --cinza-300:    #9aa3ae;   /* fundo da logo */
+  --cinza-200:    #bec5ce;   /* prata médio */
+  --cinza-150:    #d4dae1;   /* prata claro */
+  --cinza-100:    #e8ecf0;
+  --branco:       #ffffff;
 
-  /* ══════════════════════════════
-     NAVEGAÇÃO (header fixo no topo)
-     ══════════════════════════════ */
-  --cor-nav-fundo:       rgba(0, 0, 0, 0.96); /* fundo semitransparente do header */
-  --cor-nav-borda:       #d0d5d0;                   /* linha embaixo do header */
-  --cor-nav-logo:        rgb(0, 0, 0);              /* cor do texto "Barber" no logo */
-  --cor-nav-logo-span:   rgb(59, 114, 11);          /* cor do "Shop" no logo */
-  --cor-nav-link:        #ffffff;                   /* links do menu (Início, Serviços...) */
-  --cor-nav-link-hover:  rgb(59, 114, 11);          /* links ao passar o mouse */
-  --cor-nav-cta-fundo:   rgb(70, 74, 71);          /* fundo do botão "Agendar" */
-  --cor-nav-cta-texto:   #e0e0e0;                  /* texto do botão "Agendar" */
-  --cor-nav-hamburguer:  rgb(0, 0, 0);              /* cor das linhas do menu mobile */
+  /* ACENTO PRATA — substitui o verde em todos os destaques */
+  --acento:        #b8bfc8;   /* prata fria */
+  --acento-forte:  #d4dae1;   /* prata brilhante */
+  --acento-escuro: #7a8089;   /* prata sombra */
+  --acento-bg:     rgba(184,191,200,0.08);
+  --acento-borda:  rgba(184,191,200,0.2);
 
-  /* ══════════════════════════════
-     HERO (primeira tela / banner)
-     ══════════════════════════════ */
-  --cor-hero-fundo-1:   #6a6a6a;                   /* início do degradê (canto superior esquerdo) */
-  --cor-hero-fundo-2:   #000000;                   /* meio do degradê */
-  --cor-hero-fundo-3:   #5c5555;                   /* fim do degradê (canto inferior direito) */
-  --cor-hero-overlay:   rgba(20, 28, 14, 0.5);     /* escurecimento sobre o fundo */
-  --cor-hero-eyebrow:   #fefffe;                   /* texto pequeno "Barbearia em Currais Novos" */
-  --cor-hero-titulo:    #ffffff;                   /* título principal "Estilo é coisa séria" */
-  --cor-hero-titulo-em: #000000;                   /* palavra em itálico no título */
-  --cor-hero-desc:      rgba(255, 255, 255, 0.8);  /* subtítulo/descrição */
+  /* TONS ESPECIAIS (planos) */
+  --cor-bronze:   #c09060;
+  --cor-ouro:     #c8a830;
+  --cor-diamante: #80a0c8;
 
-  /* ══════════════════════════════
-     SERVIÇOS
-     ══════════════════════════════ */
-  --cor-servicos-fundo:  #000000;    /* fundo da seção inteira de serviços */
-  --cor-card-fundo:      #ffffff;    /* fundo de cada card */
-  --cor-card-borda:      #ffffff;    /* borda dos cards */
-  --cor-card-topo:       rgb(68, 71, 66); /* barra colorida no topo do card */
-  --cor-card-titulo:     rgb(0, 0, 0);     /* título do serviço */
-  --cor-card-desc:       #5a6a5a;          /* descrição do serviço */
-  --cor-card-preco:      #5a6a5a;          /* texto "A partir de" */
-  --cor-card-preco-val:  rgb(45, 50, 41); /* valor em destaque "R$ XX" */
+  /* ── NAVEGAÇÃO ── */
+  --cor-nav-fundo:  rgba(8,9,10,0.96);
+  --cor-nav-borda:  rgba(255,255,255,0.05);
+  --cor-nav-link:   var(--cinza-300);
+  --cor-nav-hover:  var(--branco);
+  --cor-nav-cta-bg: var(--cinza-700);
+  --cor-nav-cta-tx: var(--branco);
 
-  /* ══════════════════════════════
-     PLANOS
-     ══════════════════════════════ */
-  --cor-planos-fundo:   rgb(73, 70, 70);          /* fundo da seção de planos */
-  --cor-plano-card:     rgba(255,255,255,0.06); /* fundo de cada card de plano */
-  --cor-plano-borda:    rgba(212, 24, 24, 0.12); /* borda dos cards de plano */
-  --cor-plano-nome:     #ffffff;               /* nome do plano */
-  --cor-plano-preco:    #ffffff;               /* preço do plano */
-  --cor-plano-item:     rgba(255,255,255,0.7); /* itens da lista */
-  --cor-plano-badge:    #4c7439;               /* cor dos badges padrão */
-  --cor-plano-btn-borda: rgba(122,156,106,0.5);/* borda do botão de plano */
-  --cor-plano-btn-texto: #ffffff;              /* texto do botão de plano */
-  --cor-plano-obs:      rgb(255, 252, 252); /* texto de observação no rodapé dos planos */
+  /* ── HERO ── */
+  --cor-hero-overlay:   rgba(8,9,10,0.62);
+  --cor-hero-eyebrow:   var(--cinza-300);
+  --cor-hero-titulo:    var(--branco);
+  --cor-hero-em:        var(--acento-forte);
+  --cor-hero-desc:      var(--cinza-200);
 
-  /* ══════════════════════════════
-     GALERIA
-     ══════════════════════════════ */
-  --cor-galeria-fundo:  #6d6d6d;    /* fundo da seção galeria */
-  --cor-galeria-note:   #ffffff;    /* texto de aviso "substituir placeholders" */
-  --cor-galeria-hover:  rgba(20,28,14,0.65); /* overlay escuro ao passar o mouse nas fotos */
+  /* ── SERVIÇOS ── */
+  --cor-serv-fundo:  var(--preto-soft);
+  --cor-card-fundo:  var(--cinza-900);
+  --cor-card-borda:  rgba(255,255,255,0.06);
+  --cor-card-topo:   var(--acento);
+  --cor-card-titulo: var(--branco);
+  --cor-card-desc:   var(--cinza-300);
+  --cor-card-preco:  var(--cinza-400);
+  --cor-card-val:    var(--branco);
 
-  /* ══════════════════════════════
-     SOBRE
-     ══════════════════════════════ */
-  --cor-sobre-fundo:    #e8eae8;    /* fundo da seção sobre */
-  --cor-sobre-titulo:   rgb(0,0,0); /* título "Sobre a Barbearia" */
-  --cor-sobre-desc:     #5a6a5a;    /* textos de descrição */
-  --cor-sobre-num:      rgb(59, 114, 11); /* números "10+", "800+" */
-  --cor-sobre-label:    #5a6a5a;         /* rótulos "Anos de experiência" */
-  --cor-sobre-placeholder: #d0d5d0;      /* fundo do placeholder de foto */
+  /* ── EQUIPE ── */
+  --cor-equipe-fundo: var(--cinza-950);
 
-  /* ══════════════════════════════
-     AGENDAMENTO (formulário)
-     ══════════════════════════════ */
-  --cor-form-fundo:     rgb(0, 0, 0); /* fundo da seção de agendamento */
-  --cor-form-eyebrow:   #ffffff;          /* texto "Marque seu horário" */
-  --cor-form-titulo:    #37731b;          /* título "Agendamento" */
-  --cor-form-desc:      rgb(255, 255, 255); /* descrição do formulário */
-  --cor-form-card:      #ffffff;          /* fundo branco do formulário */
-  --cor-form-input:     #f0f2f0;          /* fundo dos campos de input */
-  --cor-form-label:     #2e2e2e;          /* cor dos labels */
-  --cor-form-texto:     #2e2e2e;          /* cor do texto digitado */
-  --cor-form-borda:     #d0d5d0;          /* borda dos inputs */
-  --cor-form-foco:      rgb(59, 114, 11); /* borda ao focar no input */
-  --cor-form-erro:      #c0392b;          /* cor das mensagens de erro */
-  --cor-form-btn:       rgb(59, 114, 11); /* fundo do botão enviar */
-  --cor-form-btn-hover: rgb(0, 0, 0);     /* fundo do botão ao passar mouse */
+  /* ── PLANOS ── */
+  --cor-planos-fundo: var(--cinza-900);
+  --cor-plano-card:   rgba(255,255,255,0.03);
+  --cor-plano-borda:  rgba(255,255,255,0.07);
 
-  /* ══════════════════════════════
-     CONTATO
-     ══════════════════════════════ */
-  --cor-contato-fundo:  #ffffff;          /* fundo da seção de contato */
-  --cor-contato-titulo: rgb(0, 0, 0);    /* título "Contato" */
-  --cor-contato-texto:  #5a6a5a;         /* textos de endereço, horário etc */
-  --cor-contato-link:   rgb(59, 114, 11);/* links (WhatsApp, Instagram) */
+  /* ── GALERIA ── */
+  --cor-galeria-fundo: var(--preto);
 
-  /* ══════════════════════════════
-     FOOTER (rodapé)
-     ══════════════════════════════ */
-  --cor-footer-fundo:   rgb(0, 0, 0);    /* fundo do rodapé */
-  --cor-footer-logo:    #ffffff;         /* texto "Barber" no logo do footer */
-  --cor-footer-span:    #4c7439;         /* texto "Shop" no logo do footer */
-  --cor-footer-copy:    rgba(255,255,255,0.4); /* texto de copyright */
-  --cor-footer-wpp:     #4c7439;         /* link "Fale conosco" */
+  /* ── SOBRE ── */
+  --cor-sobre-fundo: var(--cinza-850);
+
+  /* ── FORM ── */
+  --cor-form-fundo: var(--preto-soft);
+  --cor-form-card:  var(--cinza-900);
+  --cor-form-input: var(--cinza-800);
+  --cor-form-borda: rgba(255,255,255,0.09);
+  --cor-form-foco:  var(--acento);
+  --cor-form-erro:  #e05a4a;
+  --cor-form-btn:   var(--cinza-600);
+
+  /* ── CONTATO ── */
+  --cor-contato-fundo: var(--cinza-900);
+
+  /* ── FOOTER ── */
+  --cor-footer-fundo: var(--preto);
 }
 
 
@@ -193,18 +106,14 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--fonte-corpo);
-  background: #f0f2f0;
-  color: #2e2e2e;
+  background: var(--preto);
+  color: var(--cinza-200);
   line-height: 1.6;
   overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a   { color: inherit; text-decoration: none; }
 ul  { list-style: none; }
-
-/* ─────────────────────────────────────────
-   3. TIPOGRAFIA BASE
-───────────────────────────────────────── */
 h1, h2, h3 {
   font-family: var(--fonte-titulo);
   line-height: 1.15;
@@ -212,86 +121,178 @@ h1, h2, h3 {
   text-transform: uppercase;
 }
 
-/* ─────────────────────────────────────────
-   4. UTILITÁRIOS GERAIS
-───────────────────────────────────────── */
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.section { padding: 80px 0; }
 
-/* Eyebrow — texto pequeno acima dos títulos */
+/* ─────────────────────────────────────────
+   3. BARRA DE PROGRESSO
+───────────────────────────────────────── */
+#scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cinza-600), var(--acento-forte), var(--cinza-600));
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+
+/* ─────────────────────────────────────────
+   4. KEYFRAMES
+───────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(28px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+@keyframes slideRight {
+  from { opacity:0; transform:translateX(-20px); }
+  to   { opacity:1; transform:translateX(0); }
+}
+@keyframes blink {
+  0%,100% { opacity:1; } 50% { opacity:0; }
+}
+@keyframes float {
+  0%,100% { transform:translateY(0); }
+  50%      { transform:translateY(-7px); }
+}
+@keyframes pulse-ring {
+  0%   { transform:scale(1);   opacity:0.5; }
+  100% { transform:scale(1.9); opacity:0; }
+}
+@keyframes shimmer {
+  0%   { left:-100%; }
+  100% { left:200%; }
+}
+@keyframes metalShine {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+/* Cursor typewriter */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px; height: 0.82em;
+  background: var(--acento-forte);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.8s step-end infinite;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.reveal-stagger.visible { opacity:1; transform:translateY(0); }
+
+
+/* ─────────────────────────────────────────
+   5. UTILITÁRIOS
+───────────────────────────────────────── */
+
+/* Compensa o header fixo ao navegar direto para uma âncora entre páginas */
+section[id] {
+  scroll-margin-top: 90px;
+}
+
+.container { width:90%; max-width:1100px; margin:0 auto; }
+.section { padding:88px 0; }
+
 .section-eyebrow {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   margin-bottom: 8px;
   font-family: var(--fonte-corpo);
-  color: var(--cor-nav-cta-fundo); /* verde padrão */
+  color: var(--acento);
 }
-.section-eyebrow.light { color: #6c6c6c; } /* versão clara para fundos escuros */
+.section-eyebrow.light { color: var(--cinza-400); }
 
-/* Títulos de seção */
 .section-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  margin-bottom: 40px;
-  color: rgb(0,0,0);
+  font-size: clamp(1.9rem, 4vw, 2.9rem);
+  margin-bottom: 44px;
+  color: var(--branco);
 }
-.section-title.light { color: #ffffff; } /* versão clara para fundos escuros */
+
+/* Linha decorativa prata abaixo do título */
+.section-title::after {
+  content: '';
+  display: block;
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--acento), var(--cinza-600));
+  margin-top: 12px;
+}
 
 /* Botões */
 .btn {
   display: inline-block;
   padding: 13px 28px;
   border-radius: var(--raio-sm);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: 500;
   font-family: var(--fonte-titulo);
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
   transition: var(--transicao);
   border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
 }
-/* Botão primário (verde) */
 .btn-primary {
-  background: var(--cor-form-btn);
-  color: #ffffff;
-  border-color: var(--cor-form-btn);
+  background: var(--cinza-700);
+  color: var(--branco);
+  border-color: var(--cinza-600);
 }
 .btn-primary:hover {
-  background: var(--cor-form-btn-hover);
-  border-color: var(--cor-form-btn-hover);
+  background: var(--cinza-600);
+  border-color: var(--acento);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.5);
 }
-/* Botão fantasma (transparente, borda branca) */
 .btn-ghost {
   background: transparent;
-  color: #ffffff;
-  border-color: rgba(255,255,255,0.6);
+  color: var(--branco);
+  border-color: rgba(255,255,255,0.22);
 }
-.btn-ghost:hover { background: rgba(255,255,255,0.12); }
-/* Botão largura total */
-.btn-full { width: 100%; text-align: center; }
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: var(--acento);
+  transform: translateY(-2px);
+}
+.btn-full { width:100%; text-align:center; }
+
+/* Divisor metálico entre seções */
+.section-line {
+  width:100%; height:1px;
+  background: linear-gradient(90deg, transparent, var(--acento-borda), transparent);
+}
 
 
 /* ─────────────────────────────────────────
-   5. NAVEGAÇÃO (header fixo)
-   Para mudar: edite as variáveis --cor-nav-*
+   6. NAVEGAÇÃO
 ───────────────────────────────────────── */
 .header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top:0; left:0; right:0;
   z-index: 100;
-  background: var(--cor-nav-fundo);       /* fundo do header */
-  backdrop-filter: blur(8px);
+  background: var(--cor-nav-fundo);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--cor-nav-borda);
-  transition: box-shadow var(--transicao);
+  transition: box-shadow var(--transicao), border-color var(--transicao);
 }
 .header.scrolled {
-  box-shadow: 0 2px 20px rgba(45,58,34,0.14);
+  box-shadow: 0 2px 36px rgba(0,0,0,0.7);
+  border-bottom-color: rgba(255,255,255,0.08);
 }
 .nav {
   display: flex;
@@ -299,663 +300,805 @@ h1, h2, h3 {
   justify-content: space-between;
   height: 68px;
 }
-/* Logo */
-.nav-logo {
-  font-family: var(--fonte-titulo);
-  font-size: 1.5rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--cor-nav-logo);            /* cor do texto principal do logo */
-}
-.nav-logo span {
-  color: var(--cor-nav-logo-span);       /* cor do destaque do logo */
-}
-/* Links do menu */
-.nav-menu {
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-.nav-link {
-  font-size: 0.82rem;
-  font-weight: 500;
-  font-family: var(--fonte-titulo);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--cor-nav-link);            /* cor dos links normais */
-  transition: color var(--transicao);
-}
-.nav-link:hover {
-  color: var(--cor-nav-link-hover);      /* cor ao passar o mouse */
-}
-/* Botão "Agendar" no menu */
-.nav-cta {
-  background: var(--cor-nav-cta-fundo) !important; /* fundo do botão agendar */
-  color: var(--cor-nav-cta-texto) !important;       /* texto do botão agendar */
-  padding: 9px 18px;
-  border-radius: var(--raio-sm);
-}
-.nav-cta:hover {
-  background: rgb(0,0,0) !important;    /* hover do botão agendar */
-}
-/* Botão hambúrguer (mobile) */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-}
-.nav-toggle span {
-  display: block;
-  width: 24px; height: 2px;
-  background: var(--cor-nav-hamburguer); /* cor das linhas do hamburger */
-  border-radius: 2px;
-  transition: var(--transicao);
-}
-
-
-/* ─────────────────────────────────────────
-   6. HERO (primeira tela)
-   Para mudar: edite as variáveis --cor-hero-*
-───────────────────────────────────────── */
-.hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-
-  background: url('img/logo-hero.png') no-repeat center;
-  background-size: cover; /* ou cover, explico abaixo */
-
-  margin-top: 68px;
-
-  
-  margin-top: 68px;
-}
-/* Camada escura sobre o fundo */
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: var(--cor-hero-overlay);
-}
-.hero-content {
-  position: relative; z-index: 1;
-  max-width: 640px;
-}
-/* Texto pequeno acima do título */
-.hero-eyebrow {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cor-hero-eyebrow);        /* ex: "Barbearia em Currais Novos" */
-  margin-bottom: 16px;
-  font-family: var(--fonte-corpo);
-}
-/* Título principal */
-.hero-title {
-  font-size: clamp(2.6rem, 7vw, 4.5rem);
-  color: var(--cor-hero-titulo);         /* cor do título "Estilo é coisa séria" */
-  margin-bottom: 20px;
-  line-height: 1.05;
-}
-/* Palavra em itálico no título */
-.hero-title em {
-  font-style: italic;
-  color: var(--cor-hero-titulo-em);      /* cor da palavra em destaque */
-}
-/* Descrição/subtítulo */
-.hero-desc {
-  font-size: 1.05rem;
-  color: var(--cor-hero-desc);           /* cor da descrição */
-  margin-bottom: 36px;
-  max-width: 460px;
-  line-height: 1.7;
-}
-.hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; }
-
-.hero::before {
-  content: "";
-  position: absolute; 
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-}
-
-
-/* ─────────────────────────────────────────
-   7. SERVIÇOS
-   Para mudar: edite as variáveis --cor-servicos-* e --cor-card-*
-───────────────────────────────────────── */
-/* Fundo da seção */
-.section-servicos {
-  background: var(--cor-servicos-fundo); /* fundo da área de serviços */
-}
-/* Título e eyebrow da seção serviços ficam claros por causa do fundo escuro */
-.section-servicos .section-eyebrow { color: #a0c890; }
-.section-servicos .section-title   { color: #ffffff; }
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-/* Card individual */
-.service-card {
-  background: var(--cor-card-fundo);     /* fundo do card */
-  border: 1px solid var(--cor-card-borda);
-  border-radius: var(--raio);
-  padding: 24px 20px;
-  transition: var(--transicao);
-  border-top: 3px solid var(--cor-card-topo); /* barra colorida no topo */
-}
-.service-card:hover {
-  box-shadow: var(--sombra-card);
-  transform: translateY(-4px);
-}
-.service-icon  { font-size: 1.8rem; margin-bottom: 14px; }
-.service-name  {
-  font-family: var(--fonte-titulo);
-  font-size: 1rem;
-  color: var(--cor-card-titulo);         /* cor do nome do serviço */
-  margin-bottom: 8px;
-  letter-spacing: 0.04em;
-}
-.service-desc  {
-  font-size: 0.85rem;
-  color: var(--cor-card-desc);           /* cor da descrição do serviço */
-  margin-bottom: 14px;
-  line-height: 1.5;
-}
-.service-price { font-size: 0.88rem; color: var(--cor-card-preco); }
-.service-price strong {
-  color: var(--cor-card-preco-val);      /* cor do valor em destaque */
-  font-size: 1rem;
-}
-
-
-/* ─────────────────────────────────────────
-   8. PLANOS
-   Para mudar: edite as variáveis --cor-planos-* e --cor-plano-*
-───────────────────────────────────────── */
-/* Fundo da seção */
-.section-planos {
-  background: var(--cor-planos-fundo);   /* fundo da seção de planos */
-}
-.planos-desc {
-  color: var(--cor-plano-item);
-  margin-bottom: 40px;
-  font-size: 0.95rem;
-  max-width: 560px;
-  line-height: 1.7;
-}
-.planos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
-}
-/* Card de plano */
-.plano-card {
-  background: var(--cor-plano-card);     /* fundo semitransparente */
-  border: 1px solid var(--cor-plano-borda);
-  border-radius: var(--raio);
-  padding: 24px 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  transition: var(--transicao);
-}
-.plano-card:hover {
-  background: rgba(255,255,255,0.10);
-  transform: translateY(-3px);
-}
-/* Badge do plano (ex: "🥈 Prata") */
-.plano-badge {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 600;
-  font-family: var(--fonte-titulo);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 99px;
-  background: rgba(122,156,106,0.2);
-  color: var(--cor-plano-badge);         /* cor padrão dos badges */
-  border: 1px solid rgba(122,156,106,0.3);
-  width: fit-content;
-}
-/* Badges especiais — cada um com sua cor independente */
-.plano-badge.popular  { background: rgba(184,150,10,0.2); color: #d4b020; border-color: rgba(184,150,10,0.4); }
-.plano-badge.ouro     { background: rgba(184,150,10,0.2); color: #d4b020; border-color: rgba(184,150,10,0.4); }
-.plano-badge.diamante { background: rgba(90,122,170,0.2); color: #8aacda; border-color: rgba(90,122,170,0.4); }
-.plano-badge.exclusivo{ background: rgba(138,74,106,0.2); color: #c08aaa; border-color: rgba(138,74,106,0.4); }
-
-.plano-header { display: flex; flex-direction: column; gap: 6px; }
-.plano-nome {
-  font-family: var(--fonte-titulo);
-  font-size: 0.95rem;
-  color: var(--cor-plano-nome);          /* nome do plano */
-  letter-spacing: 0.04em;
-  line-height: 1.3;
-}
-.plano-preco {
-  font-family: var(--fonte-titulo);
-  font-size: 1.9rem;
-  color: var(--cor-plano-preco);         /* preço do plano */
-  font-weight: 700;
-}
-.plano-preco span {
-  font-size: 0.8rem;
-  font-weight: 400;
-  color: rgba(255,255,255,0.5);          /* "/mês" ao lado do preço */
-}
-.plano-itens {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.plano-itens li {
-  font-size: 0.82rem;
-  color: var(--cor-plano-item);          /* itens da lista */
-  line-height: 1.5;
-}
-.plano-itens li strong { color: var(--cor-plano-preco); }
-
-/* Botão de cada plano */
-.btn-plano {
-  display: block;
-  text-align: center;
-  padding: 11px 16px;
-  border-radius: var(--raio-sm);
-  font-size: 0.78rem;
-  font-family: var(--fonte-titulo);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  font-weight: 600;
-  border: 1px solid var(--cor-plano-btn-borda);
-  color: var(--cor-plano-btn-texto);     /* cor do texto do botão */
-  transition: var(--transicao);
-  background: transparent;
-}
-.btn-plano:hover {
-  background: rgb(59, 114, 11);          /* hover do botão do plano */
-  color: #ffffff;
-  border-color: rgb(59, 114, 11);
-}
-/* Destaques visuais de planos especiais */
-.plano-popular  { border-color: rgba(184,150,10,0.5); background: rgba(184,150,10,0.06); }
-.plano-diamante { border-color: rgba(90,122,170,0.5);  background: rgba(90,122,170,0.06); }
-.plano-exclusivo{ border-color: rgba(138,74,106,0.5);  background: rgba(138,74,106,0.06); }
-
-/* Observação no rodapé dos planos */
-.planos-obs {
-  text-align: center;
-  margin-top: 32px;
-  font-size: 0.78rem;
-  color: var(--cor-plano-obs);           /* texto de aviso */
-  font-style: italic;
-}
-
-
-/* ─────────────────────────────────────────
-   9. GALERIA
-   Para mudar: edite as variáveis --cor-galeria-*
-───────────────────────────────────────── */
-.section-galeria {
-  background: var(--cor-galeria-fundo);  /* fundo da seção galeria */
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-.gallery-item {
-  aspect-ratio: 1;
-  border-radius: var(--raio-sm);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--transicao);
-}
-/* Label ao passar o mouse */
-.gallery-item::after {
-  content: attr(data-label);
-  position: absolute; inset: 0;
-  background: var(--cor-galeria-hover);  /* overlay escuro no hover */
-  color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--fonte-titulo);
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  opacity: 0;
-  transition: var(--transicao);
-}
-.gallery-item:hover { transform: scale(1.03); }
-.gallery-item:hover::after { opacity: 1; }
-
-.gallery-note {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 0.8rem;
-  color: var(--cor-galeria-note);        /* texto de aviso da galeria */
-  font-style: italic;
-}
-
-
-/* ─────────────────────────────────────────
-   10. SOBRE
-   Para mudar: edite as variáveis --cor-sobre-*
-───────────────────────────────────────── */
-.section-sobre {
-  background: var(--cor-sobre-fundo);    /* fundo da seção sobre */
-}
-.section-sobre .section-title { color: var(--cor-sobre-titulo); }
-
-.sobre-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-}
-.sobre-desc {
-  color: var(--cor-sobre-desc);          /* parágrafos de descrição */
-  margin-bottom: 16px;
-  font-size: 0.95rem;
-  line-height: 1.7;
-}
-.sobre-stats { display: flex; gap: 32px; margin-top: 32px; flex-wrap: wrap; }
-.stat-num {
-  display: block;
-  font-family: var(--fonte-titulo);
-  font-size: 2.2rem;
-  color: var(--cor-sobre-num);           /* números "10+", "800+" */
-  font-weight: 700;
-}
-.stat-label {
-  font-size: 0.78rem;
-  color: var(--cor-sobre-label);         /* rótulos das estatísticas */
-}
-.sobre-img-placeholder {
-  background: var(--cor-sobre-placeholder);
-  border-radius: var(--raio);
-  height: 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--cor-sobre-desc);
-  text-align: center;
-  line-height: 1.6;
-}
-
-
-/* ─────────────────────────────────────────
-   11. AGENDAMENTO (formulário)
-   Para mudar: edite as variáveis --cor-form-*
-───────────────────────────────────────── */
-.section-agendamento {
-  background: var(--cor-form-fundo);     /* fundo da seção agendamento */
-}
-.section-agendamento .section-eyebrow { color: var(--cor-form-eyebrow); }
-.section-agendamento .section-title   { color: var(--cor-form-titulo); }
-
-.agendar-desc {
-  color: var(--cor-form-desc);           /* descrição acima do formulário */
-  margin-bottom: 32px;
-  font-size: 0.95rem;
-  max-width: 500px;
-  line-height: 1.7;
-}
-/* Card branco do formulário */
-.agendar-form {
-  background: var(--cor-form-card);      /* fundo do formulário */
-  border-radius: var(--raio);
-  padding: 36px;
-  max-width: 680px;
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
-}
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 20px;
-}
-.form-row .form-group { margin-bottom: 0; }
-.form-group label {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--cor-form-label);          /* cor dos labels */
-}
-/* Campos de input, select e textarea */
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 11px 13px;
-  border: 1.5px solid var(--cor-form-borda); /* borda normal */
-  border-radius: var(--raio-sm);
-  font-size: 0.88rem;
-  font-family: var(--fonte-corpo);
-  color: var(--cor-form-texto);
-  background: var(--cor-form-input);     /* fundo dos inputs */
-  transition: border-color var(--transicao);
-  outline: none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: var(--cor-form-foco);    /* borda ao focar */
-}
-.form-group input.erro,
-.form-group select.erro { border-color: var(--cor-form-erro); }
-.form-error {
-  font-size: 0.76rem;
-  color: var(--cor-form-erro);           /* mensagens de erro */
-  min-height: 16px;
-}
-
-
-/* ─────────────────────────────────────────
-   12. CONTATO
-   Para mudar: edite as variáveis --cor-contato-*
-───────────────────────────────────────── */
-.section-contato {
-  background: var(--cor-contato-fundo);  /* fundo da seção contato */
-}
-.section-contato .section-title { color: var(--cor-contato-titulo); }
-
-.contato-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 60px;
-  align-items: start;
-}
-.contato-list { display: flex; flex-direction: column; gap: 24px; margin-top: 8px; }
-.contato-list li {
-  display: flex;
-  gap: 14px;
-  align-items: flex-start;
-  font-size: 0.88rem;
-  color: var(--cor-contato-texto);       /* textos de endereço, horário */
-  line-height: 1.6;
-}
-.contato-list a {
-  color: var(--cor-contato-link);        /* links de WhatsApp e Instagram */
-}
-.contato-list a:hover { text-decoration: underline; }
-.contato-icon { font-size: 1.2rem; margin-top: 2px; flex-shrink: 0; }
-
-
-/* ─────────────────────────────────────────
-   13. FOOTER (rodapé)
-   Para mudar: edite as variáveis --cor-footer-*
-───────────────────────────────────────── */
-.footer {
-  background: var(--cor-footer-fundo);   /* fundo do rodapé */
-  padding: 28px 0;
-}
-.footer-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-}
-.footer-logo {
-  font-family: var(--fonte-titulo);
-  font-size: 1.2rem;
-  color: var(--cor-footer-logo);         /* texto principal do logo no footer */
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-.footer-logo span { color: var(--cor-footer-span); } /* destaque do logo no footer */
-.footer-copy { font-size: 0.8rem; color: var(--cor-footer-copy); } /* copyright */
-.footer-whatsapp {
-  font-size: 0.85rem;
-  color: var(--cor-footer-wpp);          /* link "Fale conosco" */
-  font-weight: 500;
-}
-.footer-whatsapp:hover { text-decoration: underline; }
-
-
-/* ─────────────────────────────────────────
-   14. WHATSAPP FLUTUANTE
-   Para mudar: altere o background abaixo
-───────────────────────────────────────── */
-.whatsapp-float {
-  position: fixed;
-  bottom: 28px; right: 28px;
-  z-index: 200;
-  background: #25d366;                   /* cor do botão WhatsApp (verde padrão) */
-  color: white;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
-  transition: var(--transicao);
-}
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 28px rgba(37,211,102,0.5);
-}
-
-
-/* ─────────────────────────────────────────
-   15. RESPONSIVO — MOBILE
-───────────────────────────────────────── */
-@media (max-width: 768px) {
-
-  /* Menu mobile — abre ao clicar no hambúrguer */
-  .nav-menu {
-    position: fixed;
-    top: 68px; left: 0; right: 0;
-    background: var(--cor-nav-fundo);    /* mesmo fundo do header */
-    flex-direction: column;
-    padding: 24px;
-    gap: 20px;
-    border-bottom: 1px solid var(--cor-nav-borda);
-    transform: translateY(-130%);
-    transition: transform var(--transicao);
-    z-index: 99;
-  }
-  .nav-menu.aberto { transform: translateY(0); }
-  .nav-toggle { display: flex; }
-
-  .section { padding: 56px 0; }
-
-  /* Grids viram coluna única */
-  .sobre-grid,
-  .contato-grid { grid-template-columns: 1fr; gap: 32px; }
-
-  /* Galeria vira 2 colunas */
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Formulário vira coluna única */
-  .form-row { grid-template-columns: 1fr; }
-  .agendar-form { padding: 24px 18px; }
-
-  /* Botões do hero empilham */
-  .hero-buttons { flex-direction: column; }
-  .hero-buttons .btn { text-align: center; }
-
-  /* Footer centraliza */
-  .footer-inner { flex-direction: column; text-align: center; }
-
-  /* Planos viram coluna única */
-  .planos-grid { grid-template-columns: 1fr; }
-
-  .sobre-stats { gap: 20px; }
-}
-
-@media (max-width: 480px) {
-  .gallery-grid  { grid-template-columns: 1fr 1fr; }
-  .services-grid { grid-template-columns: 1fr; }
-}
-
-
-/* ─────────────────────────────────────────
-   16. LOGO DA BARBEARIA
-   logo-hero.png → hero (logo metálica grande)
-   logo.png      → header e footer (logo preta menor)
-───────────────────────────────────────── */
-
-/* ── HEADER: logo preta no fundo claro ── */
 .nav-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   padding: 4px 0;
 }
-.nav-logo-img {
-  height: 54px;              /* altura no menu — aumente ou diminua aqui */
-  width: auto;
-  object-fit: contain;
-  image-rendering: -webkit-optimize-contrast; /* mais nítida em telas normais */
-  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15)); /* leve sombra para destacar */
+.logo-text { display:flex; flex-direction:column; line-height:1.1; }
+.logo-main {
+  font-family: var(--fonte-titulo);
+  font-size: 1.15rem;
+  color: var(--branco);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.logo-sub {
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--acento);
+  text-transform: uppercase;
 }
 
-/* ── HERO: logo metálica grande centralizada ── */
-.hero-logo {
-  width: min(420px, 85%);    /* largura máxima — responsivo automaticamente */
-  height: auto;
-  object-fit: contain;
-  margin-bottom: 28px;
-  display: block;
-  /* Remove fundo cinza da screenshot, mantendo só a logo */
-  border-radius: 16px;
+.nav-menu { display:flex; align-items:center; gap:28px; }
+.nav-link {
+  font-size: 0.76rem;
+  font-weight: 500;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--cor-nav-link);
+  transition: color var(--transicao);
+  position: relative;
+}
+.nav-link::after {
+  content:'';
+  position:absolute;
+  bottom:-4px; left:0;
+  width:0; height:1px;
+  background: var(--acento);
+  transition: width var(--transicao);
+}
+.nav-link:hover       { color: var(--cor-nav-hover); }
+.nav-link:hover::after { width:100%; }
+.nav-link.active      { color: var(--branco); }
+.nav-link.active::after { width:100%; }
+
+.nav-cta {
+  background: var(--cor-nav-cta-bg) !important;
+  color: var(--cor-nav-cta-tx) !important;
+  padding: 9px 20px;
+  border-radius: var(--raio-sm);
+  border: 1px solid var(--acento-borda) !important;
+}
+.nav-cta::after { display:none !important; }
+.nav-cta:hover  { background: var(--cinza-600) !important; border-color: var(--acento) !important; }
+
+.nav-toggle {
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none; border:none;
+  cursor:pointer; padding:4px;
+}
+.nav-toggle span {
+  display:block; width:24px; height:2px;
+  background: var(--branco);
+  border-radius:2px;
+  transition: var(--transicao);
+}
+
+
+/* ─────────────────────────────────────────
+   7. HERO
+───────────────────────────────────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url('img/logo-hero.png') no-repeat center center;
+  background-size: cover;
+  margin-top: 68px;
+}
+.hero::before {
+  content:"";
+  position:absolute; inset:0;
+  background: var(--cor-hero-overlay);
+  z-index:0;
+}
+#particles-canvas {
+  position:absolute; inset:0;
+  z-index:1; pointer-events:none;
+}
+.hero-content {
+  position:relative; z-index:2;
+  max-width:660px;
+}
+.hero-eyebrow {
+  font-size: 0.73rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--cor-hero-eyebrow);
+  margin-bottom: 18px;
+  font-family: var(--fonte-corpo);
+  opacity:0;
+  animation: slideRight 0.7s ease 0.2s forwards;
+}
+.hero-title {
+  font-size: clamp(2.8rem,7vw,5rem);
+  color: var(--cor-hero-titulo);
+  margin-bottom: 22px;
+  line-height: 1.05;
+  min-height: 1.2em;
+  opacity:0;
+  animation: fadeUp 0.8s ease 0.5s forwards;
+}
+.hero-title::after { display:none; }  /* sem linha no hero */
+.hero-title em {
+  font-style: italic;
+  /* Efeito metálico prata no destaque do título */
+  background: linear-gradient(135deg, var(--cinza-200) 0%, var(--branco) 40%, var(--cinza-300) 60%, var(--cinza-150) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--cor-hero-desc);
+  margin-bottom: 38px;
+  max-width: 480px;
+  line-height: 1.75;
+  opacity:0;
+  animation: fadeUp 0.8s ease 1s forwards;
+}
+.hero-buttons {
+  display:flex; gap:16px; flex-wrap:wrap;
+  opacity:0;
+  animation: fadeUp 0.8s ease 1.3s forwards;
+}
+
+
+/* ─────────────────────────────────────────
+   8. SERVIÇOS
+───────────────────────────────────────── */
+.section-servicos {
+  background: var(--cor-serv-fundo);
+  position:relative;
+}
+.section-servicos::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, var(--acento-borda), transparent);
+}
+.section-servicos .section-eyebrow { color: var(--acento); }
+.section-servicos .section-title   { color: var(--branco); }
+
+.services-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:16px;
+}
+.service-card {
+  background: var(--cor-card-fundo);
+  border: 1px solid var(--cor-card-borda);
+  border-top: 2px solid var(--acento-escuro);
+  border-radius: var(--raio);
+  padding: 24px 20px;
+  transition: transform var(--transicao), border-color var(--transicao), box-shadow var(--transicao);
+  position:relative; overflow:hidden;
+}
+.service-card::after {
+  content:'';
+  position:absolute;
+  top:0; left:-100%;
+  width:60%; height:100%;
+  background: linear-gradient(105deg, transparent 30%, rgba(255,255,255,0.035) 50%, transparent 70%);
+  pointer-events:none;
+}
+.service-card:hover::after { animation: shimmer 0.6s ease forwards; }
+.service-card:hover {
+  border-top-color: var(--acento);
+  border-color: var(--acento-borda);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.5);
+}
+.service-icon  { font-size:1.8rem; margin-bottom:14px; }
+.service-name  {
+  font-family:var(--fonte-titulo);
+  font-size:0.98rem;
+  color: var(--cor-card-titulo);
+  margin-bottom:8px;
+  letter-spacing:0.04em;
+}
+.service-desc  { font-size:0.83rem; color:var(--cor-card-desc); margin-bottom:14px; line-height:1.55; }
+.service-meta  { font-size:0.76rem; color:var(--cinza-500); margin-bottom:6px; }
+.service-price { font-size:0.86rem; color:var(--cor-card-preco); }
+.service-price strong { color:var(--cor-card-val); font-size:1.02rem; }
+
+
+/* ─────────────────────────────────────────
+   9. EQUIPE
+───────────────────────────────────────── */
+.section-equipe {
+  background: var(--cor-equipe-fundo);
+  position:relative;
+}
+.section-equipe::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, var(--acento-borda), transparent);
+}
+.section-equipe .section-eyebrow { color: var(--acento); }
+.section-equipe .section-title   { color: var(--branco); }
+
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 700px;
+}
+.membro-card {
+  background: var(--cinza-900);
+  border: 1px solid var(--acento-borda);
+  border-radius: var(--raio);
   overflow: hidden;
-  /* Sombra suave para destacar sobre o fundo verde */
-  filter: drop-shadow(0 4px 24px rgba(0,0,0,0.5));
+  transition: transform var(--transicao), box-shadow var(--transicao), border-color var(--transicao);
+}
+.membro-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+  border-color: var(--acento);
 }
 
-/* ── FOOTER: logo preta sobre fundo escuro — inverte para branco ── */
-.footer-logo-img {
-  height: 42px;              /* altura no footer — ajuste aqui */
-  width: auto;
-  object-fit: contain;
-  /* Inverte a logo preta para branca no fundo escuro */
-  filter: brightness(0) invert(1);
-  opacity: 0.85;
+/* Foto / placeholder do membro */
+.membro-foto {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--cinza-800);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.membro-foto img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+/* Placeholder caso não tenha foto */
+.membro-foto-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, var(--cinza-800) 0%, var(--cinza-700) 100%);
+  gap: 12px;
+}
+.membro-avatar {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: var(--cinza-700);
+  border: 2px solid var(--acento-borda);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+}
+.membro-foto-label {
+  font-size: 0.76rem;
+  color: var(--cinza-400);
+  text-align: center;
+  line-height: 1.4;
+  letter-spacing: 0.06em;
 }
 
-/* ── RESPONSIVO ── */
-@media (max-width: 768px) {
-  .nav-logo-img    { height: 44px; }
-  .hero-logo       { width: min(300px, 90%); margin-bottom: 20px; }
-  .footer-logo-img { height: 34px; }
+/* Faixa metálica decorativa na base da foto */
+.membro-foto::after {
+  content:'';
+  position:absolute;
+  bottom:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, transparent, var(--acento), transparent);
 }
-@media (max-width: 480px) {
-  .nav-logo-img    { height: 38px; }
-  .hero-logo       { width: min(240px, 88%); }
+
+.membro-info {
+  padding: 22px 20px 24px;
+}
+.membro-nome {
+  font-family: var(--fonte-titulo);
+  font-size: 1.35rem;
+  color: var(--branco);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+/* Nome com efeito metálico prata */
+.membro-nome span {
+  background: linear-gradient(135deg, var(--cinza-150) 0%, var(--branco) 50%, var(--cinza-300) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.membro-cargo {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--acento);
+  margin-bottom: 14px;
+  font-family: var(--fonte-corpo);
+}
+.membro-desc {
+  font-size: 0.84rem;
+  color: var(--cinza-300);
+  line-height: 1.65;
+  margin-bottom: 18px;
+}
+.membro-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.membro-tag {
+  font-size: 0.68rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: var(--acento-bg);
+  color: var(--acento);
+  border: 1px solid var(--acento-borda);
+}
+
+
+/* ─────────────────────────────────────────
+   10. PLANOS
+───────────────────────────────────────── */
+.section-planos {
+  background: var(--cor-planos-fundo);
+  position:relative;
+}
+.section-planos::before {
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+}
+.section-planos .section-eyebrow { color: var(--acento); }
+.section-planos .section-title   { color: var(--branco); }
+.planos-desc {
+  color: var(--cinza-300);
+  margin-bottom: 44px;
+  font-size: 0.95rem;
+  max-width: 560px;
+  line-height: 1.75;
+}
+.planos-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+  gap:16px;
+}
+.plano-card {
+  background: var(--cor-plano-card);
+  border: 1px solid var(--cor-plano-borda);
+  border-radius: var(--raio);
+  padding: 24px 20px;
+  display:flex; flex-direction:column; gap:16px;
+  transition: transform var(--transicao), background var(--transicao), box-shadow var(--transicao);
+}
+.plano-card:hover {
+  background: rgba(255,255,255,0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.45);
+  border-color: var(--acento-borda);
+}
+.plano-badge {
+  display:inline-block;
+  font-size:0.68rem; font-weight:600;
+  font-family:var(--fonte-titulo);
+  letter-spacing:0.13em; text-transform:uppercase;
+  padding:4px 12px; border-radius:99px;
+  background: var(--acento-bg);
+  color: var(--acento);
+  border: 1px solid var(--acento-borda);
+  width:fit-content;
+}
+.plano-badge.popular  { background:rgba(200,168,48,.12); color:#d4b428; border-color:rgba(200,168,48,.3); }
+.plano-badge.ouro     { background:rgba(200,168,48,.12); color:#d4b428; border-color:rgba(200,168,48,.3); }
+.plano-badge.diamante { background:rgba(128,160,200,.12); color:#8ab0d8; border-color:rgba(128,160,200,.3); }
+.plano-badge.exclusivo{ background:rgba(160,120,180,.12); color:#c090c8; border-color:rgba(160,120,180,.3); }
+
+.plano-header { display:flex; flex-direction:column; gap:6px; }
+.plano-nome {
+  font-family:var(--fonte-titulo);
+  font-size:0.9rem;
+  color: var(--branco);
+  letter-spacing:0.04em;
+  line-height:1.3;
+}
+.plano-preco {
+  font-family:var(--fonte-titulo);
+  font-size:1.95rem;
+  color: var(--branco);
+  font-weight:700;
+}
+.plano-preco span { font-size:0.76rem; font-weight:400; color:var(--cinza-500); }
+.plano-itens { flex:1; display:flex; flex-direction:column; gap:6px; }
+.plano-itens li { font-size:0.81rem; color:var(--cinza-300); line-height:1.5; }
+.plano-itens li strong { color:var(--branco); }
+
+.btn-plano {
+  display:block; text-align:center;
+  padding:11px 16px; border-radius:var(--raio-sm);
+  font-size:0.75rem; font-family:var(--fonte-titulo);
+  letter-spacing:0.13em; text-transform:uppercase; font-weight:600;
+  border:1px solid rgba(255,255,255,0.12);
+  color:var(--branco);
+  transition:var(--transicao); background:transparent;
+}
+.btn-plano:hover {
+  background: var(--cinza-700);
+  border-color: var(--acento);
+  transform: translateY(-1px);
+}
+.plano-popular  { border-color:rgba(200,168,48,.28); background:rgba(200,168,48,.03); }
+.plano-diamante { border-color:rgba(128,160,200,.28); background:rgba(128,160,200,.03); }
+.plano-exclusivo{ border-color:rgba(160,120,180,.28); background:rgba(160,120,180,.03); }
+.planos-obs {
+  text-align:center; margin-top:36px;
+  font-size:0.76rem; color:var(--cinza-500); font-style:italic;
+}
+
+
+/* ─────────────────────────────────────────
+   11. GALERIA
+───────────────────────────────────────── */
+.section-galeria { background:var(--cor-galeria-fundo); }
+.section-galeria .section-eyebrow { color:var(--acento); }
+.section-galeria .section-title   { color:var(--branco); }
+.gallery-grid {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+}
+.gallery-item {
+  aspect-ratio:1;
+  border-radius:var(--raio-sm);
+  cursor:pointer; position:relative; overflow:hidden;
+  transition:transform 0.35s ease;
+  border:1px solid rgba(255,255,255,0.04);
+}
+.gallery-item::after {
+  content:attr(data-label);
+  position:absolute; inset:0;
+  background:rgba(0,0,0,0.65);
+  color:var(--branco);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--fonte-titulo);
+  font-size:0.8rem; letter-spacing:0.12em; text-transform:uppercase;
+  opacity:0; transition:opacity 0.3s ease;
+  border:2px solid rgba(184,191,200,0);
+  border-radius:var(--raio-sm);
+}
+.gallery-item:hover { transform:scale(1.04); }
+.gallery-item:hover::after { opacity:1; border-color:rgba(184,191,200,0.5); }
+
+
+/* ─────────────────────────────────────────
+   12. SOBRE
+───────────────────────────────────────── */
+.section-sobre { background:var(--cor-sobre-fundo); }
+.section-sobre .section-eyebrow { color:var(--acento); }
+.section-sobre .section-title   { color:var(--branco); }
+.sobre-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:64px; align-items:center;
+}
+.sobre-desc { color:var(--cinza-300); margin-bottom:16px; font-size:0.95rem; line-height:1.75; }
+.sobre-stats { display:flex; gap:36px; margin-top:36px; flex-wrap:wrap; }
+.stat-num {
+  display:block;
+  font-family:var(--fonte-titulo);
+  font-size:2.4rem;
+  font-weight:700;
+  background: linear-gradient(135deg, var(--cinza-200), var(--branco), var(--cinza-300));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.stat-label { font-size:0.74rem; color:var(--cinza-400); text-transform:uppercase; letter-spacing:0.08em; }
+.sobre-img-placeholder {
+  background: var(--cinza-800);
+  border-radius:var(--raio);
+  height:340px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  font-size:2rem; color:var(--cinza-500);
+  text-align:center; line-height:1.6;
+  border:1px solid var(--acento-borda);
+}
+
+
+/* ─────────────────────────────────────────
+   13. AGENDAMENTO
+───────────────────────────────────────── */
+.section-agendamento { background:var(--cor-form-fundo); }
+.section-agendamento .section-eyebrow { color:var(--acento); }
+.section-agendamento .section-title   { color:var(--branco); }
+.agendar-desc {
+  color:var(--cinza-300); margin-bottom:36px;
+  font-size:0.95rem; max-width:500px; line-height:1.75;
+}
+.agendar-form {
+  background:var(--cor-form-card);
+  border-radius:var(--raio);
+  padding:40px;
+  max-width:700px;
+  border:1px solid var(--cor-form-borda);
+}
+.form-row {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:20px; margin-bottom:20px;
+}
+.form-group {
+  display:flex; flex-direction:column; gap:7px;
+  margin-bottom:20px;
+}
+.form-row .form-group { margin-bottom:0; }
+.form-group label {
+  font-size:0.79rem; font-weight:500;
+  color:var(--cinza-200); letter-spacing:0.04em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding:12px 14px;
+  border:1.5px solid var(--cor-form-borda);
+  border-radius:var(--raio-sm);
+  font-size:0.88rem;
+  font-family:var(--fonte-corpo);
+  color:var(--branco);
+  background:var(--cor-form-input);
+  transition:border-color var(--transicao), box-shadow var(--transicao);
+  outline:none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 3px rgba(184,191,200,0.1);
+}
+.form-group select option { background:var(--cinza-800); color:var(--branco); }
+.form-group input.erro,
+.form-group select.erro { border-color:var(--cor-form-erro); }
+.form-error { font-size:0.76rem; color:var(--cor-form-erro); min-height:16px; }
+
+/* Cards de seleção de barbeiro */
+.barbeiro-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.barbeiro-opcao {
+  position:relative;
+}
+.barbeiro-opcao input[type="radio"] {
+  position:absolute; opacity:0; width:0; height:0;
+}
+.barbeiro-label {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:var(--raio-sm);
+  border:1.5px solid var(--cor-form-borda);
+  background:var(--cinza-800);
+  cursor:pointer;
+  transition:border-color var(--transicao), background var(--transicao);
+}
+.barbeiro-label:hover {
+  border-color: var(--acento);
+  background: var(--cinza-700);
+}
+.barbeiro-opcao input[type="radio"]:checked + .barbeiro-label {
+  border-color: var(--acento);
+  background: rgba(184,191,200,0.08);
+  box-shadow: 0 0 0 3px rgba(184,191,200,0.1);
+}
+.barbeiro-avatar {
+  width:38px; height:38px;
+  border-radius:50%;
+  background: var(--cinza-700);
+  border:1.5px solid var(--acento-borda);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.1rem;
+  flex-shrink:0;
+}
+.barbeiro-label-text { display:flex; flex-direction:column; }
+.barbeiro-label-nome {
+  font-family:var(--fonte-titulo);
+  font-size:0.88rem;
+  color:var(--branco);
+  letter-spacing:0.04em;
+}
+.barbeiro-label-cargo {
+  font-size:0.68rem;
+  color:var(--acento-escuro);
+  text-transform:uppercase;
+  letter-spacing:0.1em;
+}
+
+
+/* ─────────────────────────────────────────
+   14. CONTATO
+───────────────────────────────────────── */
+.section-contato { background:var(--cor-contato-fundo); }
+.section-contato .section-eyebrow { color:var(--acento); }
+.section-contato .section-title   { color:var(--branco); }
+.contato-grid {
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:64px; align-items:start;
+}
+.contato-list { display:flex; flex-direction:column; gap:24px; margin-top:8px; }
+.contato-list li {
+  display:flex; gap:14px; align-items:flex-start;
+  font-size:0.87rem; color:var(--cinza-300); line-height:1.65;
+}
+.contato-list a { color:var(--acento); transition:opacity 0.2s; }
+.contato-list a:hover { opacity:0.75; text-decoration:underline; }
+.contato-icon { font-size:1.2rem; margin-top:2px; flex-shrink:0; }
+
+
+/* ─────────────────────────────────────────
+   15. FOOTER
+───────────────────────────────────────── */
+.footer {
+  background:var(--cor-footer-fundo);
+  padding:28px 0;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.footer-inner {
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo-text { display:flex; flex-direction:column; line-height:1.1; }
+.footer-logo-main {
+  font-family:var(--fonte-titulo);
+  font-size:1.1rem; color:var(--branco);
+  letter-spacing:0.08em; text-transform:uppercase;
+}
+.footer-logo-sub {
+  font-size:0.58rem; letter-spacing:0.22em;
+  color:var(--acento); text-transform:uppercase;
+}
+.footer-copy { font-size:0.76rem; color:var(--cinza-500); }
+.footer-whatsapp {
+  font-size:0.84rem; color:var(--acento); font-weight:500;
+  transition:opacity 0.2s;
+}
+.footer-whatsapp:hover { opacity:0.7; text-decoration:underline; }
+
+
+/* ─────────────────────────────────────────
+   16. WHATSAPP FLUTUANTE
+───────────────────────────────────────── */
+.whatsapp-float {
+  position:fixed;
+  bottom:28px; right:28px; z-index:200;
+  background:#25d366; color:white;
+  width:56px; height:56px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 20px rgba(37,211,102,0.3);
+  transition:transform var(--transicao), box-shadow var(--transicao);
+  animation:float 3.2s ease-in-out infinite;
+}
+.whatsapp-float::before {
+  content:'';
+  position:absolute; inset:0; border-radius:50%;
+  border:2px solid #25d366;
+  animation:pulse-ring 2.2s ease-out infinite;
+}
+.whatsapp-float:hover {
+  transform:scale(1.12);
+  box-shadow:0 6px 30px rgba(37,211,102,0.45);
+  animation:none;
+}
+
+/* Logo no nav */
+.nav-logo-img { height:52px; width:auto; object-fit:contain; }
+.footer-logo-img { height:40px; width:auto; object-fit:contain; filter:brightness(0) invert(1); opacity:0.75; }
+
+
+/* ─────────────────────────────────────────
+   17. RESPONSIVO
+───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:0.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:0.01ms !important;
+  }
+  .reveal, .reveal-stagger { opacity:1; transform:none; }
+}
+
+/* ─────────────────────────────────────────
+   18. CARDS CLICÁVEIS (serviços, equipe e planos)
+───────────────────────────────────────── */
+.service-card {
+  cursor: pointer;
+  position: relative;
+}
+.service-card::before {
+  content: 'Selecionar →';
+  position: absolute;
+  top: 14px; right: 16px;
+  font-size: 0.62rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--acento);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.service-card:hover::before { opacity: 1; transform: translateX(0); }
+
+.service-card.is-selected {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 1px var(--acento), 0 10px 36px rgba(0,0,0,0.5);
+}
+.service-card.is-selected::before {
+  content: '✔ Selecionado';
+  opacity: 1;
+  color: var(--branco);
+}
+
+.membro-card { cursor: pointer; }
+.membro-card.is-selected {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 1px var(--acento), 0 16px 48px rgba(0,0,0,0.55);
+}
+
+#toast-selecao {
+  position: fixed;
+  left: 24px; bottom: 24px;
+  background: var(--cinza-800);
+  color: var(--branco);
+  border: 1px solid var(--acento-borda);
+  padding: 12px 20px;
+  border-radius: var(--raio-sm);
+  font-size: 0.82rem;
+  z-index: 300;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5);
+}
+#toast-selecao.show { opacity: 1; transform: translateY(0); }
+#toast-selecao strong { color: var(--acento); }
+
+.form-group select.destaque-preenchido,
+.barbeiro-label.destaque-preenchido {
+  border-color: var(--acento) !important;
+  box-shadow: 0 0 0 3px rgba(184,191,200,0.18);
+}
+
+.plano-card {
+  position: relative;
+}
+
+.plano-card.is-selected {
+  border-color: var(--acento);
+  box-shadow: 0 0 0 1px var(--acento), 0 10px 36px rgba(0,0,0,0.5);
+  background: rgba(255,255,255,0.06);
+}
+.plano-card.is-selected .btn-plano {
+  background: var(--cinza-700);
+  border-color: var(--acento);
+}
+.plano-card::before {
+  content: 'Selecionar →';
+  position: absolute;
+  top: 14px; right: 16px;
+  font-size: 0.6rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--acento);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  pointer-events: none;
+}
+.plano-card:hover::before { opacity: 1; transform: translateX(0); }
+.plano-card.is-selected::before {
+  content: '✔ Selecionado';
+  opacity: 1;
+  color: var(--branco);
 }
