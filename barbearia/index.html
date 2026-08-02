@@ -14,10 +14,16 @@
   <!-- ========== HEADER / NAV ========== -->
   <header class="header" id="header">
     <nav class="nav container">
-      <a href="#inicio" class="nav-logo"><img src="img/logo.png" alt="Ludugero Barbearia" class="nav-logo-img" /></a>
+      <a href="#inicio" class="nav-logo">
+        <span class="logo-text">
+          <span class="logo-main">Ludugero</span>
+          <span class="logo-sub">Barbearia</span>
+        </span>
+      </a>
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#inicio"      class="nav-link">Início</a></li>
         <li><a href="#servicos"    class="nav-link">Serviços</a></li>
+        <li><a href="#equipe"      class="nav-link">Equipe</a></li>
         <li><a href="#planos"      class="nav-link">Planos</a></li>
         <li><a href="#galeria"     class="nav-link">Galeria</a></li>
         <li><a href="#sobre"       class="nav-link">Sobre</a></li>
@@ -31,10 +37,9 @@
 
   <!-- ========== HERO ========== -->
   <section class="hero" id="inicio">
-    <div class="hero-overlay"></div>
     <div class="hero-content container">
       <p class="hero-eyebrow">Barbearia em Lagoa Nova, RN</p>
-      <h1 class="hero-title">conheça a melhor do  <em>seridó</em></h1>
+      <h1 class="hero-title">conheça a melhor do <em>seridó</em></h1>
       <p class="hero-desc">Cortes precisos, barba impecável e o atendimento que você merece — do jeito que homem gosta.</p>
       <div class="hero-buttons">
         <a href="#agendamento" class="btn btn-primary">Agendar horário</a>
@@ -174,6 +179,65 @@
     </div>
   </section>
 
+  <!-- ========== EQUIPE ========== -->
+  <section class="section section-equipe" id="equipe">
+    <div class="container">
+      <p class="section-eyebrow">Quem vai te atender</p>
+      <h2 class="section-title">Nossa Equipe</h2>
+      <div class="equipe-grid">
+
+        <!-- MEMBRO 1 — Ludugero -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <!-- Substitua o bloco abaixo por <img src="equipe/ludugero.jpg" alt="Ludugero"> quando tiver a foto -->
+            <div class="membro-foto-placeholder">
+              <div class="membro-avatar">💈</div>
+              <p class="membro-foto-label">Adicione a foto<br/>equipe/ludugero.jpg</p>
+            </div>
+          </div>
+          <div class="membro-info">
+            <h3 class="membro-nome"><span>Ludugero</span></h3>
+            <p class="membro-cargo">Fundador &amp; Barbeiro</p>
+            <p class="membro-desc">
+              Fundador da Ludugero Barbearia, referência em Lagoa Nova. Especialista em cortes modernos, barba Prime e tratamentos capilares. Trabalha com dedicação e orgulho em cada atendimento.
+            </p>
+            <div class="membro-tags">
+              <span class="membro-tag">Cortes</span>
+              <span class="membro-tag">Barba Prime</span>
+              <span class="membro-tag">Pigmentação</span>
+              <span class="membro-tag">Platinado</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- MEMBRO 2 — Alan -->
+        <div class="membro-card">
+          <div class="membro-foto">
+            <!-- Substitua o bloco abaixo por <img src="equipe/alan.jpg" alt="Alan"> quando tiver a foto -->
+            <div class="membro-foto-placeholder">
+              <div class="membro-avatar">✂️</div>
+              <p class="membro-foto-label">Adicione a foto<br/>equipe/alan.jpg</p>
+            </div>
+          </div>
+          <div class="membro-info">
+            <h3 class="membro-nome"><span>Alan</span></h3>
+            <p class="membro-cargo">Barbeiro</p>
+            <p class="membro-desc">
+              Habilidoso nas tesouras e navalha, Alan é referência em acabamentos limpos e barbas bem cuidadas. Atende com agilidade e atenção, garantindo a satisfação de cada cliente.
+            </p>
+            <div class="membro-tags">
+              <span class="membro-tag">Cortes</span>
+              <span class="membro-tag">Barba Expresso</span>
+              <span class="membro-tag">Barbaterapia</span>
+              <span class="membro-tag">Sobrancelha</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ========== PLANOS ========== -->
   <section class="section section-planos" id="planos">
     <div class="container">
@@ -183,7 +247,6 @@
 
       <div class="planos-grid">
 
-        <!-- Plano Só Barba -->
         <div class="plano-card">
           <div class="plano-header">
             <p class="plano-nome">Só Barba</p>
@@ -197,7 +260,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Só Corte -->
         <div class="plano-card">
           <div class="plano-header">
             <p class="plano-nome">Só Corte</p>
@@ -211,7 +273,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Corte + Sobrancelha -->
         <div class="plano-card">
           <div class="plano-header">
             <p class="plano-nome">Corte + Sobrancelha</p>
@@ -225,7 +286,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Bronze -->
         <div class="plano-card plano-destaque">
           <div class="plano-badge">🥉 Bronze</div>
           <div class="plano-header">
@@ -240,7 +300,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Prata -->
         <div class="plano-card plano-popular">
           <div class="plano-badge popular">🥈 Prata — Mais Popular</div>
           <div class="plano-header">
@@ -256,7 +315,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Ouro -->
         <div class="plano-card plano-destaque">
           <div class="plano-badge ouro">🥇 Ouro</div>
           <div class="plano-header">
@@ -272,7 +330,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Diamante -->
         <div class="plano-card plano-diamante">
           <div class="plano-badge diamante">💎 Diamante</div>
           <div class="plano-header">
@@ -289,7 +346,6 @@
           <a href="#agendamento" class="btn btn-plano">Quero esse plano</a>
         </div>
 
-        <!-- Plano Exclusivo -->
         <div class="plano-card plano-exclusivo">
           <div class="plano-badge exclusivo">👨‍👦 Exclusivo Família</div>
           <div class="plano-header">
@@ -308,7 +364,6 @@
         </div>
 
       </div>
-
       <p class="planos-obs">* Planos sem fidelidade. Cancele quando quiser. Serviços disponíveis de segunda a quinta, exceto Diamante (todos os dias).</p>
     </div>
   </section>
@@ -319,12 +374,12 @@
       <p class="section-eyebrow">Nosso trabalho</p>
       <h2 class="section-title">Galeria</h2>
       <div class="gallery-grid" id="gallery-grid">
-        <div class="gallery-item" style="background:#4a5e3a;" data-label="Corte Degradê"></div>
-        <div class="gallery-item" style="background:#2d3a22;" data-label="Barba Prime"></div>
-        <div class="gallery-item" style="background:#7a9c6a;" data-label="Corte + Barba"></div>
-        <div class="gallery-item" style="background:#5a7a4a;" data-label="Barbaterapia"></div>
-        <div class="gallery-item" style="background-image: url('galeria/pigmentacao1.png'); background-size: cover; background-position: center;" data-label="Pigmentação"></div>
-        <div class="gallery-item" style="background:#6b8c5a;" data-label="Corte Infantil"></div>
+        <div class="gallery-item" style="background:#2a2c2f;" data-label="Corte Degradê"></div>
+        <div class="gallery-item" style="background:#1e2022;" data-label="Barba Prime"></div>
+        <div class="gallery-item" style="background:#333538;" data-label="Corte + Barba"></div>
+        <div class="gallery-item" style="background:#252729;" data-label="Barbaterapia"></div>
+        <div class="gallery-item" style="background-image:url('galeria/pigmentacao1.png'); background-size:cover; background-position:center;" data-label="Pigmentação"></div>
+        <div class="gallery-item" style="background:#2e3033;" data-label="Corte Infantil"></div>
       </div>
     </div>
   </section>
@@ -370,6 +425,8 @@
       <p class="agendar-desc">Preencha o formulário e entraremos em contato pelo WhatsApp para confirmar seu horário.</p>
 
       <form class="agendar-form" id="agendar-form" novalidate>
+
+        <!-- Nome + WhatsApp -->
         <div class="form-row">
           <div class="form-group">
             <label for="nome">Seu nome *</label>
@@ -383,6 +440,38 @@
           </div>
         </div>
 
+        <!-- Escolha do barbeiro -->
+        <div class="form-group">
+          <label>Escolha o barbeiro *</label>
+          <div class="barbeiro-grid">
+
+            <div class="barbeiro-opcao">
+              <input type="radio" id="barb-ludugero" name="barbeiro" value="Ludugero" />
+              <label class="barbeiro-label" for="barb-ludugero">
+                <div class="barbeiro-avatar">💈</div>
+                <div class="barbeiro-label-text">
+                  <span class="barbeiro-label-nome">Ludugero</span>
+                  <span class="barbeiro-label-cargo">Fundador</span>
+                </div>
+              </label>
+            </div>
+
+            <div class="barbeiro-opcao">
+              <input type="radio" id="barb-alan" name="barbeiro" value="Alan" />
+              <label class="barbeiro-label" for="barb-alan">
+                <div class="barbeiro-avatar">✂️</div>
+                <div class="barbeiro-label-text">
+                  <span class="barbeiro-label-nome">Alan</span>
+                  <span class="barbeiro-label-cargo">Barbeiro</span>
+                </div>
+              </label>
+            </div>
+
+          </div>
+          <span class="form-error" id="erro-barbeiro"></span>
+        </div>
+
+        <!-- Serviço + Data -->
         <div class="form-row">
           <div class="form-group">
             <label for="servico">Serviço ou plano *</label>
@@ -425,6 +514,7 @@
           </div>
         </div>
 
+        <!-- Observação -->
         <div class="form-group">
           <label for="mensagem">Observação (opcional)</label>
           <textarea id="mensagem" name="mensagem" rows="3" placeholder="Ex: prefiro pela manhã, quero assinar um plano..."></textarea>
@@ -476,13 +566,11 @@
           </li>
         </ul>
       </div>
-
-      <!-- Google Maps — Lagoa Nova RN -->
       <div class="contato-mapa">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.5!2d-36.458!3d-6.153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zTGFnb2EgTm92YSwgUk4!5e0!3m2!1spt-BR!2sbr!4v1620000000000"
           width="100%" height="320"
-          style="border:0; border-radius:12px;"
+          style="border:0; border-radius:12px; filter:grayscale(1) contrast(1.1);"
           allowfullscreen="" loading="lazy"
           title="Localização da Ludugero Barbearia">
         </iframe>
@@ -493,13 +581,16 @@
   <!-- ========== FOOTER ========== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <img src="img/logo.png" alt="Ludugero Barbearia" class="footer-logo-img" />
+      <div class="footer-logo-text">
+        <span class="footer-logo-main">Ludugero</span>
+        <span class="footer-logo-sub">Barbearia</span>
+      </div>
       <p class="footer-copy">© 2025 Ludugero Barbearia · Lagoa Nova, RN</p>
       <a href="https://wa.me/5584981582916" target="_blank" class="footer-whatsapp">💬 Fale conosco</a>
     </div>
   </footer>
 
-  <!-- ========== WHATSAPP FLUTUANTE ========== -->
+  <!-- WHATSAPP FLUTUANTE -->
   <a href="https://wa.me/5584981582916?text=Olá!%20Vim%20pelo%20site%20da%20Ludugero%20Barbearia%20e%20gostaria%20de%20agendar%20um%20horário."
      class="whatsapp-float" target="_blank" aria-label="Falar no WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28">
