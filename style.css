@@ -439,6 +439,62 @@ section[id] {
   animation: fadeUp 0.8s ease 1.3s forwards;
 }
 
+/* ─────────────────────────────────────────
+   7b. TEXTURA METÁLICA ESCOVADA
+───────────────────────────────────────── */
+.hero-metal {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Linhas finas horizontais — efeito "aço escovado" */
+.hero-metal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    170deg,
+    rgba(255,255,255,0.025) 0px,
+    rgba(255,255,255,0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+/* Brilho diagonal que desliza lentamente */
+.hero-metal::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 60%;
+  height: 200%;
+  background: linear-gradient(
+    100deg,
+    transparent 0%,
+    rgba(255,255,255,0.05) 45%,
+    rgba(255,255,255,0.12) 50%,
+    rgba(255,255,255,0.05) 55%,
+    transparent 100%
+  );
+  transform: rotate(8deg);
+  animation: metalSweep 9s ease-in-out infinite;
+}
+
+@keyframes metalSweep {
+  0%   { left: -60%; }
+  50%  { left: 100%; }
+  100% { left: -60%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-metal::after { animation: none; opacity: 0.3; }
+}
+
 
 /* ─────────────────────────────────────────
    8. SERVIÇOS
@@ -496,6 +552,61 @@ section[id] {
 .service-meta  { font-size:0.76rem; color:var(--cinza-500); margin-bottom:6px; }
 .service-price { font-size:0.86rem; color:var(--cor-card-preco); }
 .service-price strong { color:var(--cor-card-val); font-size:1.02rem; }
+
+
+/* ─────────────────────────────────────────
+   8b. NAVEGAÇÃO E CATEGORIAS DE SERVIÇOS
+───────────────────────────────────────── */
+.servicos-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+.servicos-nav-item {
+  font-size: 0.76rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 9px 16px;
+  border-radius: 99px;
+  border: 1px solid var(--acento-borda);
+  background: var(--acento-bg);
+  color: var(--acento);
+  transition: var(--transicao);
+}
+.servicos-nav-item:hover {
+  background: var(--cinza-700);
+  color: var(--branco);
+  border-color: var(--acento);
+  transform: translateY(-2px);
+}
+
+.servicos-categoria {
+  margin-bottom: 56px;
+  scroll-margin-top: 100px; /* compensa o header fixo ao clicar no menu de categorias */
+}
+.servicos-categoria:last-child { margin-bottom: 0; }
+
+.servicos-categoria-titulo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--fonte-titulo);
+  font-size: 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--branco);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--acento-borda);
+}
+.servicos-categoria-titulo span { font-size: 1.25rem; }
+
+@media (max-width: 768px) {
+  .servicos-nav { gap: 8px; margin-bottom: 36px; }
+  .servicos-categoria { margin-bottom: 44px; }
+}
 
 
 /* ─────────────────────────────────────────
