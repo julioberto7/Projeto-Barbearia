@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
   }
 
-  /* 8. FORMULÁRIO → WhatsApp */
+  /* 8. FORMULÁRIO → WhatsApp + API */
   const form = document.getElementById('agendar-form');
   if (form) {
     const WPP = '5584981582916';
@@ -179,33 +179,72 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.erro').forEach(el => el.classList.remove('erro'));
     };
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       clearErr();
+
       const nome     = form.nome.value.trim();
       const tel      = form.telefone.value.trim();
       const servico  = form.servico.value;
       const data     = form.data.value;
+      const horario  = form.horario.value;
       const barb     = form.barbeiro ? form.barbeiro.value : '';
       const obs      = form.mensagem.value.trim();
       let ok = true;
 
-      if (!nome)                                  { showErr('erro-nome','Informe seu nome.');        form.nome.classList.add('erro');     ok=false; }
-      if (tel.replace(/\D/g,'').length < 10)      { showErr('erro-telefone','WhatsApp inválido.');  form.telefone.classList.add('erro'); ok=false; }
-      if (!servico)                               { showErr('erro-servico','Selecione um serviço.'); form.servico.classList.add('erro'); ok=false; }
-      if (!data)                                  { showErr('erro-data','Selecione uma data.');      form.data.classList.add('erro');    ok=false; }
-      if (!barb)                                  { showErr('erro-barbeiro','Escolha o barbeiro.');                                      ok=false; }
+      if (!nome)                              { showErr('erro-nome','Informe seu nome.');         form.nome.classList.add('erro');     ok=false; }
+      if (tel.replace(/\D/g,'').length < 10)  { showErr('erro-telefone','WhatsApp inválido.');   form.telefone.classList.add('erro'); ok=false; }
+      if (!servico)                           { showErr('erro-servico','Selecione um serviço.');  form.servico.classList.add('erro');  ok=false; }
+      if (!data)                              { showErr('erro-data','Selecione uma data.');       form.data.classList.add('erro');     ok=false; }
+      if (!horario)                           { showErr('erro-horario','Selecione um horário.');  form.horario.classList.add('erro');  ok=false; }
+      if (!barb)                              { showErr('erro-barbeiro','Escolha o barbeiro.');                                        ok=false; }
       if (!ok) return;
 
-      const dtFmt = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
-      let txt = `Olá! Vim pelo site da *Ludugero Barbearia* 💈\n\n`;
-      txt += `*Nome:* ${nome}\n`;
-      txt += `*Barbeiro:* ${barb}\n`;
-      txt += `*Serviço:* ${servico}\n`;
-      txt += `*Data:* ${dtFmt}\n`;
-      if (obs) txt += `*Obs:* ${obs}\n`;
+      const botaoEnviar = form.querySelector('button[type="submit"]');
+      const textoOriginalBtn = botaoEnviar.textContent;
+      botaoEnviar.disabled = true;
+      botaoEnviar.textContent = 'Enviando...';
 
-      window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
+      try {
+        const resposta = await fetch('http://localhost:5167/api/agendamentos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nomeCliente: nome,
+            telefone: tel,
+            data: data,
+            horario: horario,
+            servicoOuPlano: servico,
+            barbeiro: barb || null,
+            observacao: obs || null
+          })
+        });
+
+        if (!resposta.ok) {
+          const erro = await resposta.json();
+          alert(erro.mensagem || 'Não foi possível agendar. Tente outro horário.');
+          return;
+        }
+
+        const dtFmt = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
+        let txt = `Olá! Vim pelo site da *Ludugero Barbearia* 💈\n\n`;
+        txt += `*Nome:* ${nome}\n`;
+        txt += `*Barbeiro:* ${barb}\n`;
+        txt += `*Serviço:* ${servico}\n`;
+        txt += `*Data:* ${dtFmt}\n`;
+        txt += `*Horário:* ${horario.slice(0,5)}\n`;
+        if (obs) txt += `*Obs:* ${obs}\n`;
+
+        window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
+        form.reset();
+
+      } catch (erro) {
+        console.error('Erro ao agendar:', erro);
+        alert('Erro de conexão com o servidor. Verifique se a API está rodando.');
+      } finally {
+        botaoEnviar.disabled = false;
+        botaoEnviar.textContent = textoOriginalBtn;
+      }
     });
 
     /* Máscara telefone */
@@ -223,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
       form.data.min = hoje.toISOString().split('T')[0];
     }
-  }
+  } 
 
   /* 9. SMOOTH SCROLL */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
