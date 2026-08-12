@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })();
   }
 
-  /* 8. FORMULÁRIO → WhatsApp */
+  /* 8. FORMULÁRIO → WhatsApp + API */
   const form = document.getElementById('agendar-form');
   if (form) {
     const WPP = '5584981582916';
@@ -182,19 +182,22 @@ document.addEventListener('DOMContentLoaded', () => {
     form.addEventListener('submit', async e => {
       e.preventDefault();
       clearErr();
+
       const nome     = form.nome.value.trim();
       const tel      = form.telefone.value.trim();
       const servico  = form.servico.value;
       const data     = form.data.value;
+      const horario  = form.horario.value;
       const barb     = form.barbeiro ? form.barbeiro.value : '';
       const obs      = form.mensagem.value.trim();
       let ok = true;
 
-      if (!nome)                                  { showErr('erro-nome','Informe seu nome.');        form.nome.classList.add('erro');     ok=false; }
-      if (tel.replace(/\D/g,'').length < 10)      { showErr('erro-telefone','WhatsApp inválido.');  form.telefone.classList.add('erro'); ok=false; }
-      if (!servico)                               { showErr('erro-servico','Selecione um serviço.'); form.servico.classList.add('erro'); ok=false; }
-      if (!data)                                  { showErr('erro-data','Selecione uma data.');      form.data.classList.add('erro');    ok=false; }
-      if (!barb)                                  { showErr('erro-barbeiro','Escolha o barbeiro.');                                      ok=false; }
+      if (!nome)                              { showErr('erro-nome','Informe seu nome.');         form.nome.classList.add('erro');     ok=false; }
+      if (tel.replace(/\D/g,'').length < 10)  { showErr('erro-telefone','WhatsApp inválido.');   form.telefone.classList.add('erro'); ok=false; }
+      if (!servico)                           { showErr('erro-servico','Selecione um serviço.');  form.servico.classList.add('erro');  ok=false; }
+      if (!data)                              { showErr('erro-data','Selecione uma data.');       form.data.classList.add('erro');     ok=false; }
+      if (!horario)                           { showErr('erro-horario','Selecione um horário.');  form.horario.classList.add('erro');  ok=false; }
+      if (!barb)                              { showErr('erro-barbeiro','Escolha o barbeiro.');                                        ok=false; }
       if (!ok) return;
 
       const botaoEnviar = form.querySelector('button[type="submit"]');
@@ -209,8 +212,8 @@ document.addEventListener('DOMContentLoaded', () => {
           body: JSON.stringify({
             nomeCliente: nome,
             telefone: tel,
-            data: data,             // já vem yyyy-MM-dd do <input type="date">
-            horario: '09:00:00',    // fixo por enquanto — sem campo de horário no form ainda
+            data: data,
+            horario: horario,
             servicoOuPlano: servico,
             barbeiro: barb || null,
             observacao: obs || null
@@ -229,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         txt += `*Barbeiro:* ${barb}\n`;
         txt += `*Serviço:* ${servico}\n`;
         txt += `*Data:* ${dtFmt}\n`;
+        txt += `*Horário:* ${horario.slice(0,5)}\n`;
         if (obs) txt += `*Obs:* ${obs}\n`;
 
         window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
@@ -241,7 +245,6 @@ document.addEventListener('DOMContentLoaded', () => {
         botaoEnviar.disabled = false;
         botaoEnviar.textContent = textoOriginalBtn;
       }
-    
     });
 
     /* Máscara telefone */
@@ -259,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
       form.data.min = hoje.toISOString().split('T')[0];
     }
-  }
+  } 
 
   /* 9. SMOOTH SCROLL */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
