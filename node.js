@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.erro').forEach(el => el.classList.remove('erro'));
     };
 
-    form.addEventListener('submit', e => {
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       clearErr();
       const nome     = form.nome.value.trim();
@@ -197,15 +197,51 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!barb)                                  { showErr('erro-barbeiro','Escolha o barbeiro.');                                      ok=false; }
       if (!ok) return;
 
-      const dtFmt = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
-      let txt = `Olá! Vim pelo site da *Ludugero Barbearia* 💈\n\n`;
-      txt += `*Nome:* ${nome}\n`;
-      txt += `*Barbeiro:* ${barb}\n`;
-      txt += `*Serviço:* ${servico}\n`;
-      txt += `*Data:* ${dtFmt}\n`;
-      if (obs) txt += `*Obs:* ${obs}\n`;
+      const botaoEnviar = form.querySelector('button[type="submit"]');
+      const textoOriginalBtn = botaoEnviar.textContent;
+      botaoEnviar.disabled = true;
+      botaoEnviar.textContent = 'Enviando...';
 
-      window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
+      try {
+        const resposta = await fetch('http://localhost:5167/api/agendamentos', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nomeCliente: nome,
+            telefone: tel,
+            data: data,             // já vem yyyy-MM-dd do <input type="date">
+            horario: '09:00:00',    // fixo por enquanto — sem campo de horário no form ainda
+            servicoOuPlano: servico,
+            barbeiro: barb || null,
+            observacao: obs || null
+          })
+        });
+
+        if (!resposta.ok) {
+          const erro = await resposta.json();
+          alert(erro.mensagem || 'Não foi possível agendar. Tente outro horário.');
+          return;
+        }
+
+        const dtFmt = new Date(data + 'T12:00:00').toLocaleDateString('pt-BR');
+        let txt = `Olá! Vim pelo site da *Ludugero Barbearia* 💈\n\n`;
+        txt += `*Nome:* ${nome}\n`;
+        txt += `*Barbeiro:* ${barb}\n`;
+        txt += `*Serviço:* ${servico}\n`;
+        txt += `*Data:* ${dtFmt}\n`;
+        if (obs) txt += `*Obs:* ${obs}\n`;
+
+        window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
+        form.reset();
+
+      } catch (erro) {
+        console.error('Erro ao agendar:', erro);
+        alert('Erro de conexão com o servidor. Verifique se a API está rodando.');
+      } finally {
+        botaoEnviar.disabled = false;
+        botaoEnviar.textContent = textoOriginalBtn;
+      }
+    
     });
 
     /* Máscara telefone */
