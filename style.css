@@ -1022,6 +1022,11 @@ section[id] {
   letter-spacing:0.1em;
 }
 
+.form-group input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5);
+  cursor: pointer;
+  padding: 4px;
+}
 
 /* ─────────────────────────────────────────
    14. CONTATO

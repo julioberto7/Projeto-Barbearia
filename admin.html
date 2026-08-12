@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Painel | Ludugero Barbearia</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #0a0a0a; color: #fff; font-family: var(--fonte-corpo); padding: 40px 20px; }
+    .admin-container { max-width: 1100px; margin: 0 auto; }
+    .admin-titulo { font-family: var(--fonte-titulo); font-size: 1.8rem; margin-bottom: 24px; }
+    .admin-filtros { display: flex; gap: 12px; margin-bottom: 24px; flex-wrap: wrap; }
+    .admin-filtros button {
+      background: rgba(255,255,255,0.08); color: #fff; border: 1px solid rgba(255,255,255,0.2);
+      padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;
+    }
+    .admin-filtros button.ativo { background: #fff; color: #000; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    th, td { padding: 12px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.1); }
+    th { color: rgba(255,255,255,0.5); text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.05em; }
+    .status-badge {
+      padding: 4px 10px; border-radius: 99px; font-size: 0.72rem; text-transform: uppercase; font-weight: 600;
+    }
+    .status-0 { background: rgba(200,150,10,0.2); color: #d4b020; } /* Pendente */
+    .status-1 { background: rgba(59,114,11,0.2); color: #6fa832; } /* Confirmado */
+    .status-2 { background: rgba(90,122,170,0.2); color: #8aacda; } /* Concluído */
+    .status-3 { background: rgba(180,40,40,0.2); color: #d46060; } /* Cancelado */
+    select.status-select {
+      background: #1a1a1a; color: #fff; border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 4px; padding: 4px 8px; font-size: 0.8rem;
+    }
+    .admin-vazio { text-align: center; padding: 60px 0; color: rgba(255,255,255,0.4); }
+    .admin-erro { text-align: center; padding: 20px; color: #d46060; }
+  </style>
+</head>
+<body>
+
+  <div class="admin-container">
+    <h1 class="admin-titulo">💈 Painel de Agendamentos</h1>
+
+    <div class="admin-filtros" id="filtros">
+      <button data-filtro="todos" class="ativo">Todos</button>
+      <button data-filtro="0">Pendentes</button>
+      <button data-filtro="1">Confirmados</button>
+      <button data-filtro="2">Concluídos</button>
+      <button data-filtro="3">Cancelados</button>
+    </div>
+
+    <div id="conteudo">Carregando...</div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:5167/api/agendamentos';
+    const STATUS_NOMES = ['Pendente', 'Confirmado', 'Concluído', 'Cancelado'];
+    let agendamentosTodos = [];
+    let filtroAtual = 'todos';
+
+    async function carregarAgendamentos() {
+      const conteudo = document.getElementById('conteudo');
+      try {
+        const resposta = await fetch(API_URL);
+        if (!resposta.ok) throw new Error('Falha ao carregar');
+        agendamentosTodos = await resposta.json();
+        renderizar();
+      } catch (erro) {
+        conteudo.innerHTML = `<p class="admin-erro">Não foi possível carregar os agendamentos. A API está rodando?</p>`;
+        console.error(erro);
+      }
+    }
+
+    function renderizar() {
+      const conteudo = document.getElementById('conteudo');
+      const lista = filtroAtual === 'todos'
+        ? agendamentosTodos
+        : agendamentosTodos.filter(a => a.status === Number(filtroAtual));
+
+      if (lista.length === 0) {
+        conteudo.innerHTML = `<p class="admin-vazio">Nenhum agendamento encontrado.</p>`;
+        return;
+      }
+
+      const linhas = lista.map(a => `
+        <tr>
+          <td>${a.nomeCliente}</td>
+          <td>${a.telefone}</td>
+          <td>${a.barbeiro || '—'}</td>
+          <td>${a.servicoOuPlano}</td>
+          <td>${formatarData(a.data)}</td>
+          <td>${a.horario.slice(0,5)}</td>
+          <td><span class="status-badge status-${a.status}">${STATUS_NOMES[a.status]}</span></td>
+          <td>
+            <select class="status-select" data-id="${a.id}">
+              ${STATUS_NOMES.map((nome, i) => `<option value="${i}" ${i === a.status ? 'selected' : ''}>${nome}</option>`).join('')}
+            </select>
+          </td>
+        </tr>
+      `).join('');
+
+      conteudo.innerHTML = `
+        <table>
+          <thead>
+            <tr>
+              <th>Cliente</th><th>Telefone</th><th>Barbeiro</th><th>Serviço</th>
+              <th>Data</th><th>Hora</th><th>Status</th><th>Alterar</th>
+            </tr>
+          </thead>
+          <tbody>${linhas}</tbody>
+        </table>
+      `;
+
+      document.querySelectorAll('.status-select').forEach(select => {
+        select.addEventListener('change', async (e) => {
+          const id = e.target.dataset.id;
+          const novoStatus = Number(e.target.value);
+          await atualizarStatus(id, novoStatus);
+        });
+      });
+    }
+
+    async function atualizarStatus(id, novoStatus) {
+      try {
+        const resposta = await fetch(`${API_URL}/${id}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(novoStatus)
+        });
+        if (!resposta.ok) throw new Error('Falha ao atualizar');
+        await carregarAgendamentos();
+      } catch (erro) {
+        alert('Erro ao atualizar status.');
+        console.error(erro);
+      }
+    }
+
+    function formatarData(dataStr) {
+      const [ano, mes, dia] = dataStr.split('-');
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    document.getElementById('filtros').addEventListener('click', (e) => {
+      if (e.target.tagName !== 'BUTTON') return;
+      document.querySelectorAll('#filtros button').forEach(b => b.classList.remove('ativo'));
+      e.target.classList.add('ativo');
+      filtroAtual = e.target.dataset.filtro;
+      renderizar();
+    });
+
+    carregarAgendamentos();
+  </script>
+
+</body>
+</html>

@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.style.width = Math.min(pct, 100) + '%';
   }, { passive: true });
 
-   /* 2. HEADER scrolled + nav ativa */
-  const header   = document.getElementById('header');
+  /* 2. HEADER scrolled + nav ativa */
+  const header = document.getElementById('header');
   const navLinks = document.querySelectorAll('.nav-link:not(.nav-cta)');
   const sections = document.querySelectorAll('section[id]');
   window.addEventListener('scroll', () => {
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* 3. MENU MOBILE */
   const navToggle = document.getElementById('nav-toggle');
-  const navMenu   = document.getElementById('nav-menu');
+  const navMenu = document.getElementById('nav-menu');
   navToggle?.addEventListener('click', () => {
     const open = navMenu.classList.toggle('aberto');
     navToggle.setAttribute('aria-expanded', open);
@@ -42,13 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
   /* 4. TYPEWRITER no hero */
   const heroTitle = document.querySelector('.hero-title');
   if (heroTitle) {
-    const raw    = heroTitle.innerHTML;
+    const raw = heroTitle.innerHTML;
     const emMatch = raw.match(/<em>(.*?)<\/em>/);
-    const emText  = emMatch ? emMatch[1] : '';
-    const before  = raw.split('<em>')[0];
+    const emText = emMatch ? emMatch[1] : '';
+    const before = raw.split('<em>')[0];
 
     heroTitle.innerHTML = '';
-    heroTitle.style.opacity  = '1';
+    heroTitle.style.opacity = '1';
     heroTitle.style.animation = 'none';
 
     const cursor = document.createElement('span');
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* 6. CONTADOR ANIMADO */
   const statsMap = {
-    '15+': { target:15, suffix:'+' },
-    '8':   { target:8,  suffix:'' },
-    '100%':{ target:100, suffix:'%' },
+    '15+': { target: 15, suffix: '+' },
+    '8': { target: 8, suffix: '' },
+    '100%': { target: 100, suffix: '%' },
   };
   const cntObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const el   = e.target;
+      const el = e.target;
       const info = statsMap[el.textContent.trim()];
       if (!info) return;
       let cur = 0;
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let W, H;
 
     const resize = () => {
-      W = canvas.width  = hero.offsetWidth;
+      W = canvas.width = hero.offsetWidth;
       H = canvas.height = hero.offsetHeight;
     };
     resize();
@@ -148,8 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
       x: Math.random() * (W || 1200),
       y: Math.random() * (H || 800),
       r: Math.random() * 1.3 + 0.3,
-      vx:(Math.random() - 0.5) * 0.18,
-      vy:(Math.random() - 0.5) * 0.18,
+      vx: (Math.random() - 0.5) * 0.18,
+      vy: (Math.random() - 0.5) * 0.18,
       a: Math.random() * 0.35 + 0.08,
     }));
 
@@ -183,21 +183,21 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       clearErr();
 
-      const nome     = form.nome.value.trim();
-      const tel      = form.telefone.value.trim();
-      const servico  = form.servico.value;
-      const data     = form.data.value;
-      const horario  = form.horario.value;
-      const barb     = form.barbeiro ? form.barbeiro.value : '';
-      const obs      = form.mensagem.value.trim();
+      const nome = form.nome.value.trim();
+      const tel = form.telefone.value.trim();
+      const servico = form.servico.value;
+      const data = form.data.value;
+      const horario = form.horario.value;
+      const barb = form.barbeiro ? form.barbeiro.value : '';
+      const obs = form.mensagem.value.trim();
       let ok = true;
 
-      if (!nome)                              { showErr('erro-nome','Informe seu nome.');         form.nome.classList.add('erro');     ok=false; }
-      if (tel.replace(/\D/g,'').length < 10)  { showErr('erro-telefone','WhatsApp inválido.');   form.telefone.classList.add('erro'); ok=false; }
-      if (!servico)                           { showErr('erro-servico','Selecione um serviço.');  form.servico.classList.add('erro');  ok=false; }
-      if (!data)                              { showErr('erro-data','Selecione uma data.');       form.data.classList.add('erro');     ok=false; }
-      if (!horario)                           { showErr('erro-horario','Selecione um horário.');  form.horario.classList.add('erro');  ok=false; }
-      if (!barb)                              { showErr('erro-barbeiro','Escolha o barbeiro.');                                        ok=false; }
+      if (!nome) { showErr('erro-nome', 'Informe seu nome.'); form.nome.classList.add('erro'); ok = false; }
+      if (tel.replace(/\D/g, '').length < 10) { showErr('erro-telefone', 'WhatsApp inválido.'); form.telefone.classList.add('erro'); ok = false; }
+      if (!servico) { showErr('erro-servico', 'Selecione um serviço.'); form.servico.classList.add('erro'); ok = false; }
+      if (!data) { showErr('erro-data', 'Selecione uma data.'); form.data.classList.add('erro'); ok = false; }
+      if (!horario) { showErr('erro-horario', 'Selecione um horário.'); form.horario.classList.add('erro'); ok = false; }
+      if (!barb) { showErr('erro-barbeiro', 'Escolha o barbeiro.'); ok = false; }
       if (!ok) return;
 
       const botaoEnviar = form.querySelector('button[type="submit"]');
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         txt += `*Barbeiro:* ${barb}\n`;
         txt += `*Serviço:* ${servico}\n`;
         txt += `*Data:* ${dtFmt}\n`;
-        txt += `*Horário:* ${horario.slice(0,5)}\n`;
+        txt += `*Horário:* ${horario.slice(0, 5)}\n`;
         if (obs) txt += `*Obs:* ${obs}\n`;
 
         window.open(`https://wa.me/${WPP}?text=${encodeURIComponent(txt)}`, '_blank');
@@ -247,11 +247,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+
+    if (form.data) {
+      form.data.addEventListener('click', () => form.data.showPicker?.());
+    }
+
     /* Máscara telefone */
-    form.telefone?.addEventListener('input', function() {
-      let v = this.value.replace(/\D/g,'').slice(0,11);
-      if (v.length >= 7)      v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
-      else if (v.length >= 3) v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+    form.telefone?.addEventListener('input', function () {
+      let v = this.value.replace(/\D/g, '').slice(0, 11);
+      if (v.length >= 7) v = `(${v.slice(0, 2)}) ${v.slice(2, 7)}-${v.slice(7)}`;
+      else if (v.length >= 3) v = `(${v.slice(0, 2)}) ${v.slice(2)}`;
       else if (v.length >= 1) v = `(${v}`;
       this.value = v;
     });
@@ -262,15 +267,50 @@ document.addEventListener('DOMContentLoaded', () => {
       hoje.setMinutes(hoje.getMinutes() - hoje.getTimezoneOffset());
       form.data.min = hoje.toISOString().split('T')[0];
     }
-  } 
+    /* Horários dinâmicos — desabilita horários já ocupados no dia escolhido */
+    if (form.data && form.horario) {
+      form.data.addEventListener('change', async () => {
+        const dataEscolhida = form.data.value;
+        if (!dataEscolhida) return;
+
+        // Reabilita tudo antes de consultar de novo
+        Array.from(form.horario.options).forEach(opt => {
+          opt.disabled = false;
+          opt.textContent = opt.value ? opt.value.slice(0, 5) : 'Selecione';
+        });
+
+        try {
+          const resposta = await fetch(`http://localhost:5167/api/agendamentos/disponibilidade?data=${dataEscolhida}`);
+          if (!resposta.ok) return;
+
+          const ocupados = await resposta.json();
+
+          Array.from(form.horario.options).forEach(opt => {
+            if (opt.value && ocupados.includes(opt.value)) {
+              opt.disabled = true;
+              opt.textContent = `${opt.value.slice(0, 5)} (ocupado)`;
+            }
+          });
+
+          // Se o horário que estava selecionado ficou ocupado, limpa a seleção
+          if (form.horario.value && ocupados.includes(form.horario.value)) {
+            form.horario.value = '';
+          }
+
+        } catch (erro) {
+          console.error('Erro ao buscar disponibilidade:', erro);
+        }
+      });
+    }
+  }
 
   /* 9. SMOOTH SCROLL */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
+    a.addEventListener('click', function (e) {
       const t = document.querySelector(this.getAttribute('href'));
       if (!t) return;
       e.preventDefault();
-      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth' });
+      window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
     });
   });
 
@@ -288,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
     toast._timer = setTimeout(() => toast.classList.remove('show'), 2600);
   }
 
-   /* 11. CLIQUE EM CARD DE SERVIÇO OU PLANO → pré-seleciona no formulário */
+  /* 11. CLIQUE EM CARD DE SERVIÇO OU PLANO → pré-seleciona no formulário */
   document.querySelectorAll('.service-card[data-service], .plano-card[data-service]').forEach(card => {
     card.addEventListener('click', (e) => {
       // Evita que o clique no botão "Quero esse plano" dispare navegação nativa duplicada
