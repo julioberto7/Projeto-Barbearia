@@ -321,7 +321,7 @@ section[id] {
   text-transform: uppercase;
 }
 
-.nav-menu { display:flex; align-items:center; gap:28px; }
+.nav-menu { display:flex; align-items:center; gap:28px; margin-left: auto; margin-right: 28px; }
 .nav-link {
   font-size: 0.76rem;
   font-weight: 500;
@@ -355,12 +355,18 @@ section[id] {
 .nav-cta::after { display:none !important; }
 .nav-cta:hover  { background: var(--cinza-600) !important; border-color: var(--acento) !important; }
 
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 .nav-toggle {
   display:none;
   flex-direction:column;
   gap:5px;
   background:none; border:none;
   cursor:pointer; padding:4px;
+  z-index: 101;
 }
 .nav-toggle span {
   display:block; width:24px; height:2px;
@@ -1218,3 +1224,75 @@ section[id] {
   opacity: 1;
   color: var(--branco);
 }
+
+/* ─────────────────────────────────────────
+   19. RESPONSIVO - MOBILE
+───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Gaveta Lateral (Menu) */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    height: 100vh;
+    background: var(--cor-nav-fundo);
+    backdrop-filter: blur(14px);
+    border-left: 1px solid var(--cor-nav-borda);
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 32px;
+    gap: 32px;
+    transition: transform var(--transicao), box-shadow var(--transicao);
+    z-index: 90;
+    margin: 0;
+  }
+  .nav-menu.aberto {
+    transform: translateX(-280px);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+  }
+  
+  /* Botão Hamburguer e Ações */
+  .nav-toggle {
+    display: flex;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  .nav-actions {
+    gap: 12px;
+  }
+  .nav-cta {
+    padding: 7px 14px;
+    font-size: 0.7rem;
+  }
+
+  /* Ajustes responsivos para grids */
+  .sobre-grid, .contato-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .hero-title {
+    font-size: 2.6rem;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  .hero-buttons .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
