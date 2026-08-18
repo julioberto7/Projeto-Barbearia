@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | Painel Ludugero Barbearia</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      background: #0a0a0a; color: #fff; font-family: var(--fonte-corpo);
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 36px 32px;
+      max-width: 380px;
+      width: 100%;
+    }
+    .login-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .login-form { display: flex; flex-direction: column; gap: 16px; }
+    .login-form label { font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-bottom: 4px; display: block; }
+    .login-form input {
+      width: 100%; padding: 11px 13px; border-radius: 8px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06); color: #fff; font-size: 0.9rem;
+      outline: none; transition: border-color 0.3s ease;
+    }
+    .login-form input:focus { border-color: rgb(59,114,11); }
+    .login-btn {
+      margin-top: 8px; padding: 12px; border: none; border-radius: 8px;
+      background: rgb(59,114,11); color: #fff; font-family: var(--fonte-titulo);
+      letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.85rem;
+      cursor: pointer; transition: background 0.3s ease;
+    }
+    .login-btn:hover { background: #000; }
+    .login-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    .login-erro {
+      color: #d46060; font-size: 0.82rem; text-align: center; min-height: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <h1 class="login-titulo">💈 Painel Admin</h1>
+    <form class="login-form" id="login-form">
+      <div>
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" required autocomplete="username" />
+      </div>
+      <div>
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" required autocomplete="current-password" />
+      </div>
+      <p class="login-erro" id="login-erro"></p>
+      <button type="submit" class="login-btn" id="login-btn">Entrar</button>
+    </form>
+  </div>
+
+  <script>
+    const API_LOGIN_URL = 'http://localhost:5167/api/auth/login';
+
+    const form = document.getElementById('login-form');
+    const erroEl = document.getElementById('login-erro');
+    const btn = document.getElementById('login-btn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      erroEl.textContent = '';
+      btn.disabled = true;
+      btn.textContent = 'Entrando...';
+
+      const nomeUsuario = document.getElementById('usuario').value.trim();
+      const senha = document.getElementById('senha').value;
+
+      try {
+        const resposta = await fetch(API_LOGIN_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nomeUsuario, senha })
+        });
+
+        if (!resposta.ok) {
+          throw new Error('Usuário ou senha inválidos.');
+        }
+
+        const dados = await resposta.json();
+        sessionStorage.setItem('ludugero_token', dados.token);
+        window.location.href = 'admin.html';
+
+      } catch (erro) {
+        erroEl.textContent = erro.message || 'Erro ao fazer login. Tente novamente.';
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+      }
+    });
+  </script>
+
+</body>
+</html>
