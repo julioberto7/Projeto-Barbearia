@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Painel | Ludugero Barbearia</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
   <style>
     body {
       background: #0a0a0a;
@@ -23,6 +24,100 @@
       font-family: var(--fonte-titulo);
       font-size: 1.8rem;
       margin-bottom: 24px;
+    }
+
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-sair {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.82rem;
+    }
+
+    .btn-sair:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    /* Cards de estatística */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .stat-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .stat-card-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 8px;
+    }
+
+    .stat-card-valor {
+      font-family: var(--fonte-titulo);
+      font-size: 1.9rem;
+      color: #fff;
+    }
+
+    .stat-card-valor.destaque {
+      color: #6fa832;
+    }
+
+    /* Gráficos */
+    .charts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .chart-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .chart-card h3 {
+      font-family: var(--fonte-titulo);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .chart-card-wrap {
+      position: relative;
+      height: 220px;
+    }
+
+    .secao-tabela-titulo {
+      font-family: var(--fonte-titulo);
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
 
     .admin-filtros {
@@ -124,13 +219,31 @@
 
 <body>
 
+  <div class="admin-container">
 
-
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+    <div class="admin-header">
       <h1 class="admin-titulo" style="margin-bottom:0;">💈 Painel de Agendamentos</h1>
-      <button id="btn-sair"
-        style="background:rgba(255,255,255,0.08); color:#fff; border:1px solid rgba(255,255,255,0.2); padding:8px 16px; border-radius:6px; cursor:pointer; font-size:0.82rem;">Sair</button>
+      <button id="btn-sair" class="btn-sair">Sair</button>
     </div>
+
+    <div class="stats-grid" id="stats-grid"></div>
+
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h3>Serviços mais pedidos</h3>
+        <div class="chart-card-wrap"><canvas id="chart-servicos"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>Agendamentos por dia da semana</h3>
+        <div class="chart-card-wrap"><canvas id="chart-dias"></canvas></div>
+      </div>
+      <div class="chart-card">
+        <h3>Status dos agendamentos</h3>
+        <div class="chart-card-wrap"><canvas id="chart-status"></canvas></div>
+      </div>
+    </div>
+
+    <p class="secao-tabela-titulo">Lista de agendamentos</p>
 
     <div class="admin-filtros" id="filtros">
       <button data-filtro="todos" class="ativo">Todos</button>
@@ -141,6 +254,7 @@
     </div>
 
     <div id="conteudo">Carregando...</div>
+
   </div>
 
   <script>
@@ -153,10 +267,12 @@
       sessionStorage.removeItem('ludugero_token');
       window.location.href = 'login.html';
     });
+
     const API_URL = 'http://localhost:5167/api/agendamentos';
     const STATUS_NOMES = ['Pendente', 'Confirmado', 'Concluído', 'Cancelado'];
     let agendamentosTodos = [];
     let filtroAtual = 'todos';
+    let chartServicos, chartDias, chartStatus;
 
     async function carregarAgendamentos() {
       const conteudo = document.getElementById('conteudo');
@@ -173,11 +289,128 @@
 
         if (!resposta.ok) throw new Error('Falha ao carregar');
         agendamentosTodos = await resposta.json();
+        renderizarDashboard();
         renderizar();
       } catch (erro) {
         conteudo.innerHTML = `<p class="admin-erro">Não foi possível carregar os agendamentos. A API está rodando?</p>`;
         console.error(erro);
       }
+    }
+
+    function extrairPreco(servicoOuPlano) {
+      const match = servicoOuPlano.match(/R\$\s*([\d.,]+)/);
+      if (!match) return 0;
+      return parseFloat(match[1].replace('.', '').replace(',', '.'));
+    }
+
+    function renderizarStats(lista) {
+      const total = lista.length;
+      const concluidos = lista.filter(a => a.status === 2).length;
+      const cancelados = lista.filter(a => a.status === 3).length;
+      const faturamento = lista
+        .filter(a => a.status !== 3)
+        .reduce((soma, a) => soma + extrairPreco(a.servicoOuPlano), 0);
+      const taxaConclusao = total > 0 ? Math.round((concluidos / total) * 100) : 0;
+
+      document.getElementById('stats-grid').innerHTML = `
+        <div class="stat-card">
+          <p class="stat-card-label">Total de agendamentos</p>
+          <p class="stat-card-valor">${total}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card-label">Faturamento estimado</p>
+          <p class="stat-card-valor destaque">R$ ${faturamento.toFixed(2).replace('.', ',')}</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card-label">Taxa de conclusão</p>
+          <p class="stat-card-valor">${taxaConclusao}%</p>
+        </div>
+        <div class="stat-card">
+          <p class="stat-card-label">Cancelados</p>
+          <p class="stat-card-valor">${cancelados}</p>
+        </div>
+      `;
+    }
+
+    function renderizarGraficos(lista) {
+      const corTexto = 'rgba(255,255,255,0.7)';
+      const corGrid = 'rgba(255,255,255,0.08)';
+
+      // Serviços mais pedidos
+      const contagemServicos = {};
+      lista.forEach(a => {
+        const nome = a.servicoOuPlano.split('—')[0].trim();
+        contagemServicos[nome] = (contagemServicos[nome] || 0) + 1;
+      });
+      const topServicos = Object.entries(contagemServicos)
+        .sort((a, b) => b[1] - a[1])
+        .slice(0, 6);
+
+      if (chartServicos) chartServicos.destroy();
+      chartServicos = new Chart(document.getElementById('chart-servicos'), {
+        type: 'bar',
+        data: {
+          labels: topServicos.map(s => s[0]),
+          datasets: [{ data: topServicos.map(s => s[1]), backgroundColor: '#6fa832' }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: corTexto, font: { size: 10 } }, grid: { color: corGrid } },
+            y: { ticks: { color: corTexto, stepSize: 1 }, grid: { color: corGrid }, beginAtZero: true }
+          }
+        }
+      });
+
+      // Agendamentos por dia da semana
+      const diasNomes = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+      const contagemDias = [0, 0, 0, 0, 0, 0, 0];
+      lista.forEach(a => {
+        const dia = new Date(a.data + 'T00:00:00').getDay();
+        contagemDias[dia]++;
+      });
+
+      if (chartDias) chartDias.destroy();
+      chartDias = new Chart(document.getElementById('chart-dias'), {
+        type: 'bar',
+        data: {
+          labels: diasNomes,
+          datasets: [{ data: contagemDias, backgroundColor: '#8aacda' }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { display: false } },
+          scales: {
+            x: { ticks: { color: corTexto }, grid: { color: corGrid } },
+            y: { ticks: { color: corTexto, stepSize: 1 }, grid: { color: corGrid }, beginAtZero: true }
+          }
+        }
+      });
+
+      // Status dos agendamentos
+      const statusNomes = ['Pendente', 'Confirmado', 'Concluído', 'Cancelado'];
+      const statusCores = ['#d4b020', '#6fa832', '#8aacda', '#d46060'];
+      const contagemStatus = [0, 0, 0, 0];
+      lista.forEach(a => contagemStatus[a.status]++);
+
+      if (chartStatus) chartStatus.destroy();
+      chartStatus = new Chart(document.getElementById('chart-status'), {
+        type: 'doughnut',
+        data: {
+          labels: statusNomes,
+          datasets: [{ data: contagemStatus, backgroundColor: statusCores, borderWidth: 0 }]
+        },
+        options: {
+          responsive: true, maintainAspectRatio: false,
+          plugins: { legend: { position: 'bottom', labels: { color: corTexto, font: { size: 11 } } } }
+        }
+      });
+    }
+
+    function renderizarDashboard() {
+      renderizarStats(agendamentosTodos);
+      renderizarGraficos(agendamentosTodos);
     }
 
     function renderizar() {
