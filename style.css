@@ -1022,6 +1022,24 @@ section[id] {
   border: 1px solid var(--acento-borda);
 }
 
+/* Mapa dentro da seção Equipe — mesmo estilo do cartão de mapa
+   usado no Contato (reaproveita .mapa-header, .mapa-titulo, .mapa-btn) */
+.equipe-mapa {
+  background: var(--cinza-900);
+  padding: 18px;
+  border-radius: var(--raio);
+  border: 1px solid var(--acento-borda);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  margin-bottom: 44px;
+  max-width: 700px;
+}
+
+@media (max-width: 768px) {
+  .equipe-mapa {
+    margin-top: 28px;
+  }
+}
+
 
 /* ─────────────────────────────────────────
    10. PLANOS
@@ -1622,6 +1640,19 @@ section[id] {
   text-decoration: underline;
 }
 
+.footer-credit {
+  font-size: 0.68rem;
+  color: var(--cinza-500);
+  letter-spacing: 0.04em;
+  margin-top: 4px;
+  opacity: 0.85;
+}
+
+.footer-credit strong {
+  color: var(--acento);
+  font-weight: 500;
+}
+
 
 /* ─────────────────────────────────────────
    16. WHATSAPP FLUTUANTE
@@ -1693,6 +1724,10 @@ section[id] {
     opacity: 1;
     transform: none;
   }
+}
+
+@media (max-width: 768px) {
+  .contato-mapa { order: -1; margin-bottom: 24px; }
 }
 
 /* ─────────────────────────────────────────
@@ -1900,4 +1935,50 @@ section[id] {
     grid-template-columns: 1fr;
     gap: 0;
   }
+}
+
+
+/* ─────────────────────────────────────────
+   20. MAPA DE LOCALIZAÇÃO
+───────────────────────────────────────── */
+
+.contato-mapa {
+  background: var(--cor-form-card);
+  padding: 16px;
+ border-radius: var(--raio);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--acento-borda);
+}
+
+.mapa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mapa-titulo {
+  font-family: var(--fonte-titulo);
+  font-size: 0.95rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-contato-titulo);
+}
+
+.mapa-btn {
+  background: var(--cor-form-btn);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: var(--raio-sm);
+  font-size: 0.78rem;
+  font-family: var(--fonte-titulo);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: var(--transicao);
+}
+
+.mapa-btn:hover {
+  background: var(--cor-form-btn-hover);
 }
